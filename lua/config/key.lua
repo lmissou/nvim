@@ -1,4 +1,5 @@
 local wk = require'which-key'
+local gs = require'gitsigns'
 
 wk.setup{}
 -- 设置leader键
@@ -6,6 +7,10 @@ vim.g.mapleader =' '
 -- 设置快捷键
 vim.api.nvim_set_keymap('i', 'jk', '<esc>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<cr>', { noremap = true })
+-- Gitsigns keymap
+vim.api.nvim_set_keymap('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
+vim.api.nvim_set_keymap('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+-- vim.api.nvim_set_keymap({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 
 local keymaps = {
   w = {
@@ -27,6 +32,20 @@ local keymaps = {
     r = { '<cmd>Telescope oldfiles<cr>', 'Open Recent File' },
     t = { '<cmd>NvimTreeToggle<cr>', 'Open File Tree' },
     s = { '<cmd>Telescope live_grep<cr>', 'Search string' },
+  },
+  g = {
+    name = 'Git',
+    s = { '<cmd>Gitsigns stage_hunk<cr>', 'Stage hunk' },
+    r = { '<cmd>Gitsigns reset_hunk<cr>', 'Reset hunk' },
+    S = { gs.stage_buffer, 'Stage buffer' },
+    u = { gs.undo_stage_hunk, 'Unstage hunk' },
+    R = { gs.reset_buffer, 'Reset buffer' },
+    p = { gs.preview_hunk, 'Preview hunk' },
+    B = { function() gs.blame_line{full=true} end, 'Blame line' },
+    b = { gs.toggle_current_line_blame, 'Blame toggle' },
+    d = { gs.diffthis, 'Diff this' },
+    D = { function() gs.diffthis('~') end, 'Diff ~' },
+    -- d = { gs.toggle_deleted, 'Toggle deleted' },
   },
 }
 

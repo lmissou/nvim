@@ -44,7 +44,10 @@ return require'packer'.startup(function(use)
   use 'ahmedkhalf/project.nvim'
   -- fuzzy finder
   use 'nvim-telescope/telescope.nvim'
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- hop(easy motion)
   use 'phaazon/hop.nvim'
+  -- git
+  use 'lewis6991/gitsigns.nvim'
 end)
 
