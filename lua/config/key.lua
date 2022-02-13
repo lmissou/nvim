@@ -15,7 +15,8 @@ vim.api.nvim_set_keymap('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'
 local keymaps = {
   w = {
     name = 'Window',
-    s = { '<cmd>Alpha<cr>', 'VSplit window' },
+    s = { '<cmd>Alpha<cr>', 'Startify window' },
+    o = { '<cmd>only<cr>', 'Only current window' },
     h = { '<cmd>vsplit<cr>', 'VSplit window' },
     v = { '<cmd>split<cr>', 'Split window' },
   },
