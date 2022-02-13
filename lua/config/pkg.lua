@@ -47,6 +47,8 @@ return require'packer'.startup(function(use)
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- hop(easy motion)
   use 'phaazon/hop.nvim'
+  -- multi cursors edit
+  use 'mg979/vim-visual-multi'
   -- git
   use 'lewis6991/gitsigns.nvim'
 end)
