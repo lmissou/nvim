@@ -49,6 +49,8 @@ return require'packer'.startup(function(use)
   use 'phaazon/hop.nvim'
   -- multi cursors edit
   use 'mg979/vim-visual-multi'
+  -- terminal
+  use 'akinsho/toggleterm.nvim'
   -- git
   use 'lewis6991/gitsigns.nvim'
 end)

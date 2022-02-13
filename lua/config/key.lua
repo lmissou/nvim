@@ -11,6 +11,8 @@ vim.api.nvim_set_keymap('n', '<leader>q', ':q<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
 vim.api.nvim_set_keymap('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
 -- vim.api.nvim_set_keymap({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+-- open terminal
+vim.api.nvim_set_keymap('n', '<leader>t', ':ToggleTerm<cr>', { noremap = true })
 
 local keymaps = {
   w = {
