@@ -18,6 +18,8 @@ vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
+-- 平滑滚动
+vim.o.scrolloff = 5
 -- 设置空白字符的视觉提示
 vim.o.list = true
 vim.o.listchars = 'extends:❯,precedes:❮,tab:▸-,trail:˽'
