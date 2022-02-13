@@ -150,6 +150,7 @@ require'telescope'.setup{
 }
 require'telescope'.load_extension('projects')
 require'surround'.setup{ mappings_style = 'surround' }
+require'pears'.setup()
 require'hop'.setup{}
 require'gitsigns'.setup{}
 require'toggleterm'.setup{

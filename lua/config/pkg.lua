@@ -40,6 +40,8 @@ return require'packer'.startup(function(use)
   use 'blackCauldron7/surround.nvim'
   -- comment
   use 'numToStr/Comment.nvim'
+  -- auto pairs
+  use 'steelsojka/pears.nvim'
   -- project (change pwd)
   use 'ahmedkhalf/project.nvim'
   -- fuzzy finder
