@@ -42,6 +42,8 @@ return require'packer'.startup(function(use)
   use 'numToStr/Comment.nvim'
   -- auto pairs
   use 'steelsojka/pears.nvim'
+  -- editorconfig
+  use 'editorconfig/editorconfig-vim'
   -- project (change pwd)
   use 'ahmedkhalf/project.nvim'
   -- fuzzy finder
