@@ -49,7 +49,7 @@ local keymaps = {
   },
   t = {
     name = 'Terminal',
-    t = { '<cmd>ToggleTerm 0<cr>', 'Open terminal' },
+    t = { '<cmd>ToggleTerm<cr>', 'Open terminal' },
   },
 }
 
