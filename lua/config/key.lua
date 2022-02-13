@@ -11,25 +11,23 @@ vim.api.nvim_set_keymap('n', '<leader>q', ':q<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
 vim.api.nvim_set_keymap('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
 -- vim.api.nvim_set_keymap({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
--- open terminal
-vim.api.nvim_set_keymap('n', '<leader>t', ':ToggleTerm<cr>', { noremap = true })
 
 local keymaps = {
   w = {
-    name = 'window',
+    name = 'Window',
     s = { '<cmd>Alpha<cr>', 'VSplit window' },
     h = { '<cmd>vsplit<cr>', 'VSplit window' },
     v = { '<cmd>split<cr>', 'Split window' },
   },
   b = {
-    name = 'buffer',
+    name = 'Buffer',
     b = { '<cmd>Telescope buffers<cr>', 'Switch buffers' },
     d = { '<cmd>bdelete<cr>', 'Delete buffers' },
     n = { '<cmd>bnext<cr>', 'Next buffer' },
     p = { '<cmd>bprevious<cr>', 'Previous buffer' },
   },
   f = {
-    name = 'file',
+    name = 'File',
     f = { '<cmd>Telescope find_files<cr>', 'Find File' },
     r = { '<cmd>Telescope oldfiles<cr>', 'Open Recent File' },
     t = { '<cmd>NvimTreeToggle<cr>', 'Open File Tree' },
@@ -47,9 +45,17 @@ local keymaps = {
     b = { gs.toggle_current_line_blame, 'Blame toggle' },
     d = { gs.diffthis, 'Diff this' },
     D = { function() gs.diffthis('~') end, 'Diff ~' },
-    -- d = { gs.toggle_deleted, 'Toggle deleted' },
+  },
+  t = {
+    name = 'Terminal',
+    t = { '<cmd>ToggleTerm 0<cr>', 'Open terminal' },
   },
 }
+
+-- terminal
+for i = 1, 9, 1 do
+  keymaps.t[tostring(i)] = { '<cmd>ToggleTerm '..i..'<cr>', 'Open terminal'..i }
+end
 
 keymaps[vim.g.mapleader] = {
   name = 'motion',
