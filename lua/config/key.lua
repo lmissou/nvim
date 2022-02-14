@@ -7,10 +7,10 @@ vim.g.mapleader =' '
 -- 设置快捷键
 vim.api.nvim_set_keymap('i', 'jk', '<esc>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-s>', "<cmd>w<cr>", { noremap = true})
 -- Gitsigns keymap
-vim.api.nvim_set_keymap('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
-vim.api.nvim_set_keymap('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
--- vim.api.nvim_set_keymap({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+vim.api.nvim_set_keymap('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
+vim.api.nvim_set_keymap('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
 
 local keymaps = {
   w = {
@@ -54,8 +54,9 @@ local keymaps = {
 }
 
 -- terminal
+vim.api.nvim_set_keymap('n', '<C-h>', "<cmd>ToggleTerm<cr>", { noremap = true})
 for i = 1, 9, 1 do
-  keymaps.t[tostring(i)] = { '<cmd>ToggleTerm '..i..'<cr>', 'Open terminal'..i }
+  keymaps.t[tostring(i)] = { '<cmd>ToggleTerm '..i..'<cr>', 'Open terminal '..i }
 end
 
 keymaps[vim.g.mapleader] = {
