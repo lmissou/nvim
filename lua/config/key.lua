@@ -59,6 +59,11 @@ for i = 1, 9, 1 do
   keymaps.t[tostring(i)] = { '<cmd>ToggleTerm '..i..'<cr>', 'Open terminal '..i }
 end
 
+-- motion (hop)
+vim.api.nvim_set_keymap('n', 'gw', "<cmd>HopWord<cr>", { noremap = true})
+vim.api.nvim_set_keymap('n', 'gl', "<cmd>HopLine<cr>", { noremap = true})
+vim.api.nvim_set_keymap('n', 'gs', "<cmd>HopPattern<cr>", { noremap = true})
+vim.api.nvim_set_keymap('n', 'gC', "<cmd>HopChar2<cr>", { noremap = true})
 keymaps[vim.g.mapleader] = {
   name = 'motion',
   l = { '<cmd>HopLine<cr>', 'Goto line' },
