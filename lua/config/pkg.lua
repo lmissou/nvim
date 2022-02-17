@@ -26,6 +26,8 @@ return require'packer'.startup(function(use)
     'rafamadriz/friendly-snippets',
     'saadparwaiz1/cmp_luasnip',
   }}
+  -- sudo write/read file
+  use 'lambdalisue/suda.vim'
   -- which Key
   use 'folke/which-key.nvim'
   -- dashboard alpha
