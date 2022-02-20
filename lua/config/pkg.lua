@@ -17,6 +17,8 @@ return require'packer'.startup(function(use)
     'hrsh7th/cmp-cmdline',
     -- lsp config
     'neovim/nvim-lspconfig',
+    -- lsp saga (ui)
+    'glepnir/lspsaga.nvim',
     -- lsp installer
     'williamboman/nvim-lsp-installer',
     -- lsp icon
@@ -38,6 +40,8 @@ return require'packer'.startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   -- file tree
   use 'kyazdani42/nvim-tree.lua'
+  -- markdown preview
+  use 'iamcco/markdown-preview.nvim'
   -- surround
   use 'blackCauldron7/surround.nvim'
   -- comment
