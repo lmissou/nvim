@@ -6,11 +6,16 @@ wk.setup{}
 vim.g.mapleader =' '
 -- 设置快捷键
 vim.api.nvim_set_keymap('i', 'jk', '<esc>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>q', ':q<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-s>', "<cmd>w<cr>", { noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>q<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', 's', '<cmd>HopChar2<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'S', '<cmd>HopWord<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-s>', '<cmd>w<cr>', { noremap = true})
+vim.api.nvim_set_keymap('v', '<C-y>', '"+y', { noremap = true})
+vim.api.nvim_set_keymap('n', '<C-p>', '"+p', { noremap = true})
+vim.api.nvim_set_keymap('v', '<C-p>', '"+p', { noremap = true})
 -- Gitsigns keymap
-vim.api.nvim_set_keymap('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
-vim.api.nvim_set_keymap('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
+vim.api.nvim_set_keymap('n', ']c', '&diff ? "]c" : "<cmd>Gitsigns next_hunk<CR>"', { expr = true })
+vim.api.nvim_set_keymap('n', '[c', '&diff ? "[c" : "<cmd>Gitsigns prev_hunk<CR>"', { expr = true })
 
 local keymaps = {
   w = {
@@ -54,16 +59,16 @@ local keymaps = {
 }
 
 -- terminal
-vim.api.nvim_set_keymap('n', '<C-h>', "<cmd>ToggleTerm<cr>", { noremap = true})
+vim.api.nvim_set_keymap('n', '<C-h>', '<cmd>ToggleTerm<cr>', { noremap = true})
 for i = 1, 9, 1 do
   keymaps.t[tostring(i)] = { '<cmd>ToggleTerm '..i..'<cr>', 'Open terminal '..i }
 end
 
 -- motion (hop)
-vim.api.nvim_set_keymap('n', 'gw', "<cmd>HopWord<cr>", { noremap = true})
-vim.api.nvim_set_keymap('n', 'gl', "<cmd>HopLine<cr>", { noremap = true})
-vim.api.nvim_set_keymap('n', 'gs', "<cmd>HopPattern<cr>", { noremap = true})
-vim.api.nvim_set_keymap('n', 'gC', "<cmd>HopChar2<cr>", { noremap = true})
+vim.api.nvim_set_keymap('n', 'gw', '<cmd>HopWord<cr>', { noremap = true})
+vim.api.nvim_set_keymap('n', 'gl', '<cmd>HopLine<cr>', { noremap = true})
+vim.api.nvim_set_keymap('n', 'gs', '<cmd>HopPattern<cr>', { noremap = true})
+vim.api.nvim_set_keymap('n', 'gC', '<cmd>HopChar2<cr>', { noremap = true})
 keymaps[vim.g.mapleader] = {
   name = 'motion',
   l = { '<cmd>HopLine<cr>', 'Goto line' },

@@ -15,6 +15,8 @@ return require'packer'.startup(function(use)
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
+    -- cmp for neovim lua api
+    'hrsh7th/cmp-nvim-lua',
     -- lsp config
     'neovim/nvim-lspconfig',
     -- lsp saga (ui)
