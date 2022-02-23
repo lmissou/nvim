@@ -11,11 +11,18 @@ vim.api.nvim_set_keymap('n', 's', '<cmd>HopChar2<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', 'S', '<cmd>HopWord<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-s>', '<cmd>w<cr>', { noremap = true})
 vim.api.nvim_set_keymap('v', '<C-y>', '"+y', { noremap = true})
+vim.api.nvim_set_keymap('n', '<C-y>', '"+y', { noremap = true})
 vim.api.nvim_set_keymap('n', '<C-p>', '"+p', { noremap = true})
 vim.api.nvim_set_keymap('v', '<C-p>', '"+p', { noremap = true})
 -- Gitsigns keymap
 vim.api.nvim_set_keymap('n', ']c', '&diff ? "]c" : "<cmd>Gitsigns next_hunk<CR>"', { expr = true })
 vim.api.nvim_set_keymap('n', '[c', '&diff ? "[c" : "<cmd>Gitsigns prev_hunk<CR>"', { expr = true })
+-- motion (hop)
+vim.api.nvim_set_keymap('n', 'gw', '<cmd>HopWord<cr>', { noremap = true})
+vim.api.nvim_set_keymap('n', 'gl', '<cmd>HopLine<cr>', { noremap = true})
+vim.api.nvim_set_keymap('n', 'gs', '<cmd>HopPattern<cr>', { noremap = true})
+vim.api.nvim_set_keymap('n', 'gC', '<cmd>HopChar2<cr>', { noremap = true})
+
 
 local keymaps = {
   w = {
@@ -31,6 +38,11 @@ local keymaps = {
     d = { '<cmd>bdelete<cr>', 'Delete buffers' },
     n = { '<cmd>bnext<cr>', 'Next buffer' },
     p = { '<cmd>bprevious<cr>', 'Previous buffer' },
+    o = { '<cmd>BufferLineCloseLeft<cr><cmd>BufferLineCloseRight<cr>', 'Only current buffer' },
+    c = {
+      l = { '<cmd>BufferLineCloseLeft<cr>', 'Close left buffers' },
+      r = { '<cmd>BufferLineCloseRight<cr>', 'Close right buffers' },
+    },
   },
   f = {
     name = 'File',
@@ -52,6 +64,16 @@ local keymaps = {
     d = { gs.diffthis, 'Diff this' },
     D = { function() gs.diffthis('~') end, 'Diff ~' },
   },
+  [vim.g.mapleader] = {
+    name = 'motion',
+    l = { '<cmd>HopLine<cr>', 'Goto line' },
+    j = { '<cmd>HopLineAC<cr>', 'Goto line below' },
+    k = { '<cmd>HopLineBC<cr>', 'Goto line above' },
+    w = { '<cmd>HopWord<cr>', 'Goto word' },
+    s = { '<cmd>HopPattern<cr>', 'Goto pattern(search)' },
+    c = { '<cmd>HopChar1<cr>', 'Goto char' },
+    C = { '<cmd>HopChar2<cr>', 'Goto char2' },
+  },
   t = {
     name = 'Terminal',
     t = { '<cmd>ToggleTerm<cr>', 'Open terminal' },
@@ -63,22 +85,6 @@ vim.api.nvim_set_keymap('n', '<C-h>', '<cmd>ToggleTerm<cr>', { noremap = true})
 for i = 1, 9, 1 do
   keymaps.t[tostring(i)] = { '<cmd>ToggleTerm '..i..'<cr>', 'Open terminal '..i }
 end
-
--- motion (hop)
-vim.api.nvim_set_keymap('n', 'gw', '<cmd>HopWord<cr>', { noremap = true})
-vim.api.nvim_set_keymap('n', 'gl', '<cmd>HopLine<cr>', { noremap = true})
-vim.api.nvim_set_keymap('n', 'gs', '<cmd>HopPattern<cr>', { noremap = true})
-vim.api.nvim_set_keymap('n', 'gC', '<cmd>HopChar2<cr>', { noremap = true})
-keymaps[vim.g.mapleader] = {
-  name = 'motion',
-  l = { '<cmd>HopLine<cr>', 'Goto line' },
-  j = { '<cmd>HopLineAC<cr>', 'Goto line below' },
-  k = { '<cmd>HopLineBC<cr>', 'Goto line above' },
-  w = { '<cmd>HopWord<cr>', 'Goto word' },
-  s = { '<cmd>HopPattern<cr>', 'Goto pattern(search)' },
-  c = { '<cmd>HopChar1<cr>', 'Goto char' },
-  C = { '<cmd>HopChar2<cr>', 'Goto char2' },
-}
 
 wk.register(keymaps, { prefix = '<leader>' })
 
