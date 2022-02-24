@@ -20,7 +20,7 @@ return require'packer'.startup(function(use)
     -- lsp config
     'neovim/nvim-lspconfig',
     -- lsp saga (ui)
-    'glepnir/lspsaga.nvim',
+    'tami5/lspsaga.nvim',
     -- lsp installer
     'williamboman/nvim-lsp-installer',
     -- lsp icon
