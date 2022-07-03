@@ -2,6 +2,19 @@
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
+local TSConfig = require('nvim-treesitter.configs')
+
+TSConfig.setup({
+  -- auto tag
+  autotag = { enable = true },
+  highlight = { enable = true },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false
+  }
+})
+-- vim.o.foldmethod = "expr"
+-- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 require('luasnip.loaders.from_vscode').lazy_load()
 

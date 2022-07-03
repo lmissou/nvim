@@ -9,6 +9,10 @@ return require'packer'.startup(function(use)
   use {"catppuccin/nvim", as = "catppuccin"}
   -- icon
   use 'kyazdani42/nvim-web-devicons'
+
+  -- hight
+  use {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
+
   -- Auto Compelet
   use {'hrsh7th/nvim-cmp', requires = {
     'hrsh7th/cmp-nvim-lsp',
@@ -45,7 +49,7 @@ return require'packer'.startup(function(use)
   -- markdown preview
   use 'iamcco/markdown-preview.nvim'
   -- surround
-  use 'blackCauldron7/surround.nvim'
+  use 'ur4ltz/surround.nvim'
   -- comment
   use 'numToStr/Comment.nvim'
   -- auto pairs
