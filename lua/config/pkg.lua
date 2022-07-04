@@ -9,10 +9,8 @@ return require'packer'.startup(function(use)
   use {"catppuccin/nvim", as = "catppuccin"}
   -- icon
   use 'kyazdani42/nvim-web-devicons'
-
-  -- hight
+  -- highlight
   use {'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
-
   -- Auto Compelet
   use {'hrsh7th/nvim-cmp', requires = {
     'hrsh7th/cmp-nvim-lsp',

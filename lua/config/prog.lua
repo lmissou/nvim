@@ -4,6 +4,7 @@ local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 local TSConfig = require('nvim-treesitter.configs')
 
+-- tree-sitter highlight
 TSConfig.setup({
   -- auto tag
   autotag = { enable = true },
