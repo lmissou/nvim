@@ -3,15 +3,30 @@ local cmp = require('cmp')
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 local TSConfig = require('nvim-treesitter.configs')
+local dapui = require('dapui')
 
 -- tree-sitter highlight
 TSConfig.setup({
   -- auto tag
   autotag = { enable = true },
+  -- 高亮
   highlight = { enable = true },
+  -- 缩进
+  indent = { enable = true },
+  -- 注释格式
   context_commentstring = {
     enable = true,
     enable_autocmd = false
+  },
+  -- 启用增量选择
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = '<CR>',
+      node_incremental = '<CR>',
+      node_decremental = '<BS>',
+      scope_incremental = '<TAB>',
+    }
   }
 })
 -- 折叠代码
