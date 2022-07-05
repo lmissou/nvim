@@ -14,8 +14,11 @@ TSConfig.setup({
     enable_autocmd = false
   }
 })
--- vim.o.foldmethod = "expr"
--- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+-- 折叠代码
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+-- 默认不折叠代码
+vim.o.foldlevel = 99
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
