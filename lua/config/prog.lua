@@ -3,7 +3,6 @@ local cmp = require('cmp')
 local lspkind = require('lspkind')
 local luasnip = require('luasnip')
 local TSConfig = require('nvim-treesitter.configs')
-local dapui = require('dapui')
 
 -- tree-sitter highlight
 TSConfig.setup({
