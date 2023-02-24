@@ -14,9 +14,9 @@ vim.o.encoding = 'UTF-8'
 -- 开启鼠标
 vim.o.mouse = 'a'
 -- 设置4空格缩进
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
 vim.o.expandtab = true
 -- 平滑滚动
 vim.o.scrolloff = 5

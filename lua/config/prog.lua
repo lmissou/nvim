@@ -37,7 +37,6 @@ vim.o.foldlevel = 99
 require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
-
   formatting = {
     format = lspkind.cmp_format({
       with_text = false, -- do not show text alongside icons
@@ -66,7 +65,7 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ['<Tab>'] = cmp.mapping(function(fallback)
       if luasnip.in_snippet() and luasnip.jumpable(1) then
         luasnip.jump(1)
       elseif cmp.visible() then
@@ -77,10 +76,10 @@ cmp.setup({
         fallback()
       end
     end, {
-      "i",
-      "s",
+      'i',
+      's',
     }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
       if luasnip.in_snippet() and luasnip.jumpable(-1) then
         luasnip.jump(-1)
       elseif cmp.visible() then
@@ -89,8 +88,8 @@ cmp.setup({
         fallback()
       end
     end, {
-      "i",
-      "s",
+      'i',
+      's',
     }),
   },
   sources = cmp.config.sources({
@@ -149,7 +148,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- lsp installer
 local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(function(server)
