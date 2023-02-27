@@ -1,4 +1,14 @@
-require('config.pkg')
-require('config.ui')
-require('config.key')
-require('config.prog')
+require('core').setup({
+  modules = {
+    'basic',
+    'ui',
+    'motion',
+    'filetree',
+    'fuzzyfinder',
+    'term',
+    'git',
+    'prog',
+    'treesitter',
+    'cmp',
+  }
+})
