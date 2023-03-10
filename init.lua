@@ -10,5 +10,6 @@ require('core').setup({
     'prog',
     'treesitter',
     'cmp',
+    'mason',
   }
 })
