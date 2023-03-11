@@ -6,6 +6,11 @@ local M = {
   }
 }
 
+local mapleader = ' '
+if vim.g.mapleader ~= nil then
+  mapleader = vim.g.mapleader
+end
+
 M.nmap = {
   -- motion (hop)
   {'s', '<cmd>HopChar2<cr>'},
@@ -16,12 +21,14 @@ M.nmap = {
   {'gC', '<cmd>HopChar2<cr>'},
 }
 M.lmap = {
-  [vim.g.mapleader] = {
+  [mapleader] = {
     name = 'motion',
     l = { '<cmd>HopLine<cr>', 'Goto line' },
     j = { '<cmd>HopLineAC<cr>', 'Goto line below' },
     k = { '<cmd>HopLineBC<cr>', 'Goto line above' },
     w = { '<cmd>HopWord<cr>', 'Goto word' },
+    e = { '<cmd>HopWordAC<cr>', 'Goto word below' },
+    b = { '<cmd>HopWordBC<cr>', 'Goto word above' },
     s = { '<cmd>HopPattern<cr>', 'Goto pattern(search)' },
     c = { '<cmd>HopChar1<cr>', 'Goto char' },
     C = { '<cmd>HopChar2<cr>', 'Goto char2' },

@@ -2,8 +2,9 @@
 
 local M = {
   plugins = {
-    -- theme
-    {"catppuccin/nvim", as = "catppuccin"},
+    -- themes
+    'loctvl842/monokai-pro.nvim',
+    'shaunsingh/nord.nvim',
     -- icons
     'kyazdani42/nvim-web-devicons',
     -- dashboard alpha
@@ -31,10 +32,13 @@ M.lmap = {
 }
 
 function M.setup()
-  vim.cmd[[colorscheme catppuccin]]
   require('lualine').setup()
   require('bufferline').setup{}
   require('alpha').setup(require('alpha.themes.startify').config)
+  require("monokai-pro").setup({
+    filter = 'octagon'
+  })
+  vim.cmd[[colorscheme monokai-pro]]
 end
 
 return M

@@ -34,7 +34,9 @@ M.lmap = {
 }
 
 function M.setup()
-  require('gitsigns').setup{}
+  require('gitsigns').setup({
+    current_line_blame = true
+  })
 end
 
 return M
