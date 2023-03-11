@@ -7,6 +7,8 @@ local M = {
     'numToStr/Comment.nvim',
     -- auto pairs
     'steelsojka/pears.nvim',
+    -- autotag
+    'windwp/nvim-ts-autotag',
     -- editorconfig
     'editorconfig/editorconfig-vim',
     -- project (change pwd)
@@ -21,6 +23,8 @@ function M.setup()
   require('Comment').setup{}
   -- auto pairs
   require('pears').setup()
+  -- auto close and auto rename html tag
+  require('nvim-ts-autotag').setup()
   -- project
   require('project_nvim').setup{}
   local status_ok, telescope = pcall(require, 'telescope')
