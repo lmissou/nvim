@@ -2,6 +2,7 @@ require('core').setup({
   modules = {
     'basic',
     'ui',
+    'noice',
     'motion',
     'filetree',
     'fuzzyfinder',
