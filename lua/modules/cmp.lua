@@ -30,6 +30,10 @@ function M.setup()
   local luasnip = require('luasnip')
   require('luasnip.loaders.from_vscode').lazy_load()
   cmp.setup({
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
     formatting = {
       format = lspkind.cmp_format({
         with_text = false, -- do not show text alongside icons
@@ -37,6 +41,14 @@ function M.setup()
         -- The function below will be called before any actual modifications from lspkind
         -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
         before = function (entry, vim_item)
+          vim_item.menu = ({
+            nvim_lsp = '[LSP]',
+            nvim_lua = '[LUA]',
+            buffer = '[BUF]',
+            luasnip = '[SNIP]',
+            path = '[PATH]',
+            cmdline = '[CMD]',
+          })[entry.source.name]
           return vim_item
         end
       })

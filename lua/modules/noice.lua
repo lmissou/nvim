@@ -10,6 +10,7 @@ local M = {
 
 function M.setup()
   local noice = require('noice')
+  local notify = require('notify')
   noice.setup({
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -26,6 +27,11 @@ function M.setup()
       inc_rename = false, -- enables an input dialog for inc-rename.nvim
       lsp_doc_border = false, -- add a border to hover docs and signature help
     },
+  })
+  notify.setup({
+    timeout = 100,
+    max_width = nil,
+    max_height = 10,
   })
 end
 
