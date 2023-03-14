@@ -36,11 +36,10 @@ function M.setup()
   M.bind_key('i', 'jk', '<esc>')
   M.bind_key('n', '<leader>q', '<cmd>q<cr>')
   M.bind_key('n', '<C-s>', '<cmd>w<cr>')
-  -- 复制粘贴系统剪贴板
-  M.bind_key('v', '<C-y>', '"+y')
-  M.bind_key('n', '<C-y>', '"+y')
-  M.bind_key('n', '<C-p>', '"+p')
-  M.bind_key('v', '<C-p>', '"+p')
+  -- 复制粘贴系统剪贴板（复制：ctrl+c，粘贴：ctrl+shift+v）
+  M.bind_key('v', '<C-c>', '"+y')
+  M.bind_key('n', '<C-S-v>', '"+p')
+  M.bind_key('v', '<C-S-v>', '"+p')
   -- 使用which-key注册leader快捷键
   wk.register(M.leader_keymaps, { prefix = '<leader>' })
 end
