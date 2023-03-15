@@ -2,42 +2,22 @@
 
 local M = {
   plugins = {
-    'phaazon/hop.nvim',
-  }
-}
-
-local mapleader = ' '
-if vim.g.mapleader ~= nil then
-  mapleader = vim.g.mapleader
-end
-
-M.nmap = {
-  -- motion (hop)
-  {'s', '<cmd>HopChar2<cr>'},
-  {'S', '<cmd>HopWord<cr>'},
-  {'gw', '<cmd>HopWord<cr>'},
-  {'gl', '<cmd>HopLine<cr>'},
-  {'gs', '<cmd>HopPattern<cr>'},
-  {'gC', '<cmd>HopChar2<cr>'},
-}
-M.lmap = {
-  [mapleader] = {
-    name = 'motion',
-    l = { '<cmd>HopLine<cr>', 'Goto line' },
-    j = { '<cmd>HopLineAC<cr>', 'Goto line below' },
-    k = { '<cmd>HopLineBC<cr>', 'Goto line above' },
-    w = { '<cmd>HopWord<cr>', 'Goto word' },
-    e = { '<cmd>HopWordAC<cr>', 'Goto word below' },
-    b = { '<cmd>HopWordBC<cr>', 'Goto word above' },
-    s = { '<cmd>HopPattern<cr>', 'Goto pattern(search)' },
-    c = { '<cmd>HopChar1<cr>', 'Goto char' },
-    C = { '<cmd>HopChar2<cr>', 'Goto char2' },
+    'ggandor/leap.nvim',
+    'ggandor/flit.nvim',
   }
 }
 
 function M.setup()
-  local hop = require('hop')
-  hop.setup()
+  require('leap').add_default_mappings()
+  require('flit').setup {
+    keys = { f = 'f', F = 'F', t = 't', T = 'T' },
+    -- A string like "nv", "nvo", "o", etc.
+    labeled_modes = "v",
+    multiline = true,
+    -- Like `leap`s similar argument (call-specific overrides).
+    -- E.g.: opts = { equivalence_classes = {} }
+    opts = {}
+  }
 end
 
 return M

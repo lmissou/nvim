@@ -28,7 +28,12 @@ function M.setup()
   local cmp = require('cmp')
   local lspkind = require('lspkind')
   local luasnip = require('luasnip')
-  require('luasnip.loaders.from_vscode').lazy_load()
+  require('luasnip.loaders.from_vscode').lazy_load({
+    paths = {
+      vim.fn.stdpath('data') .. '/site/pack/packer/start/friendly-snippets',
+      vim.fn.stdpath('config') .. '/snippets',
+    }
+  })
   cmp.setup({
     window = {
       completion = cmp.config.window.bordered(),
