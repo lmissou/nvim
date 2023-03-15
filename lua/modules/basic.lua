@@ -8,6 +8,8 @@ local M = {
     'lambdalisue/suda.vim',
     -- multi cursors edit
     'mg979/vim-visual-multi',
+    -- 多行缩进
+    'joshnavdev/indentation-multiline.nvim',
     -- surround
     'kylechui/nvim-surround',
     -- 缩进线
@@ -31,12 +33,14 @@ M.lmap = {
 }
 
 function M.setup()
+  require('indentation-multiline').setup({
+    -- Mapping for right-intent
+    indent_mapping = ">",
+    -- Mapping for left-intent
+    unindent_mapping = "<",
+  })
   require'nvim-surround'.setup({})
-  require("indent_blankline").setup {
-    -- for example, context is off by default, use this to turn it on
-    -- show_current_context = true,
-    -- show_current_context_start = true,
-  }
+  require("indent_blankline").setup({})
 end
 
 return M
