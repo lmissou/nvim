@@ -5,7 +5,7 @@ local M = {}
 -- 数组合并
 function M.array_concat(arr1, arr2)
   for i in pairs(arr2) do
-    arr1[#arr1 + i] = arr2[i]
+    table.insert(arr1, arr2[i])
   end
 end
 

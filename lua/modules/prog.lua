@@ -6,7 +6,7 @@ local M = {
     -- comment
     'numToStr/Comment.nvim',
     -- auto pairs
-    'steelsojka/pears.nvim',
+    'windwp/nvim-autopairs',
     -- autotag
     'windwp/nvim-ts-autotag',
     -- editorconfig
@@ -22,7 +22,7 @@ function M.setup()
   -- comment
   require('Comment').setup{}
   -- auto pairs
-  require('pears').setup()
+  require('nvim-autopairs').setup()
   -- auto close and auto rename html tag
   require('nvim-ts-autotag').setup()
   -- project

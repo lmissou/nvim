@@ -9,7 +9,9 @@ local M = {
     -- multi cursors edit
     'mg979/vim-visual-multi',
     -- surround
-    'ur4ltz/surround.nvim',
+    'kylechui/nvim-surround',
+    -- 缩进线
+    'lukas-reineke/indent-blankline.nvim',
   }
 }
 
@@ -29,7 +31,12 @@ M.lmap = {
 }
 
 function M.setup()
-  require'surround'.setup{ mappings_style = 'surround' }
+  require'nvim-surround'.setup({})
+  require("indent_blankline").setup {
+    -- for example, context is off by default, use this to turn it on
+    -- show_current_context = true,
+    -- show_current_context_start = true,
+  }
 end
 
 return M
