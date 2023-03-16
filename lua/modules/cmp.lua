@@ -13,8 +13,6 @@ local M = {
     'neovim/nvim-lspconfig',
     -- lsp saga (ui)
     'tami5/lspsaga.nvim',
-    -- null-ls (linter)
-    'Carlosiano/null-ls.nvim',
     -- lsp icon
     'onsails/lspkind-nvim',
     -- snippets
@@ -134,14 +132,6 @@ function M.setup()
   -- lsp config
   -- lsp saga
   require'lspsaga'.init_lsp_saga()
-  local null_ls = require('null-ls')
-  null_ls.setup({
-    sources = {
-      null_ls.builtins.formatting.stylua,
-      null_ls.builtins.formatting.eslint_d,
-      null_ls.builtins.diagnostics.eslint_d,
-    },
-  })
 
 end
 

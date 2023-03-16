@@ -5,6 +5,9 @@ local M = {
     -- mason
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
+    -- null-ls (linter)
+    'Carlosiano/null-ls.nvim',
+    'jay-babu/mason-null-ls.nvim',
   }
 }
 
@@ -49,6 +52,21 @@ function M.setup()
       })
     end
   })
+  local null_ls = require('null-ls')
+  null_ls.setup({
+    sources = {
+      null_ls.builtins.formatting.eslint_d,
+    },
+  })
+  require('mason-null-ls').setup({
+    automatic_setup = true,
+  })
+  require('mason-null-ls').setup_handlers {
+    function(source_name, methods)
+      print(source_name, methods)
+      require('mason-null-ls.automatic_setup')(source_name, methods)
+    end
+  }
 end
 
 return M
