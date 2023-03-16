@@ -18,8 +18,9 @@ M.lmap = {
     b = { '<cmd>Telescope buffers<cr>', 'Switch buffers' },
   },
   f = {
-    name = 'File',
+    name = 'File&Project',
     f = { '<cmd>Telescope find_files<cr>', 'Find File' },
+    p = { '<cmd>Telescope projects<cr>', 'Find Project' },
     r = { '<cmd>Telescope oldfiles<cr>', 'Open Recent File' },
     s = { '<cmd>Telescope live_grep<cr>', 'Search string' },
   },

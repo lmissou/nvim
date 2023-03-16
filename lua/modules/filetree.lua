@@ -9,7 +9,7 @@ local M = {
 
 M.lmap = {
   f = {
-    name = 'File',
+    name = 'File&Project',
     t = { '<cmd>NvimTreeToggle<cr>', 'Open File Tree' },
   },
 }
