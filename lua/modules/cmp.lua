@@ -34,6 +34,34 @@ function M.setup()
       vim.fn.stdpath('config') .. '/snippets',
     }
   })
+
+  local cmp_tab_func = cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_next_item()
+    elseif luasnip.in_snippet() and luasnip.jumpable(1) then
+      luasnip.jump(1)
+    elseif luasnip.expandable() then
+      luasnip.expand()
+    else
+      fallback()
+    end
+  end, {
+    'i',
+    's',
+  })
+  local cmp_stab_func = cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_prev_item()
+    elseif luasnip.in_snippet() and luasnip.jumpable(-1) then
+      luasnip.jump(-1)
+    else
+      fallback()
+    end
+  end, {
+    'i',
+    's',
+  })
+
   cmp.setup({
     window = {
       completion = cmp.config.window.bordered(),
@@ -67,39 +95,16 @@ function M.setup()
     mapping = {
       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
       ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
       ['<C-e>'] = cmp.mapping({
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       }),
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      ['<Tab>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif luasnip.in_snippet() and luasnip.jumpable(1) then
-          luasnip.jump(1)
-        elseif luasnip.expandable() then
-          luasnip.expand()
-        else
-          fallback()
-        end
-      end, {
-        'i',
-        's',
-      }),
-      ['<S-Tab>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        elseif luasnip.in_snippet() and luasnip.jumpable(-1) then
-          luasnip.jump(-1)
-        else
-          fallback()
-        end
-      end, {
-        'i',
-        's',
-      }),
+      ['<Tab>'] = cmp_tab_func,
+      ['<S-Tab>'] = cmp_stab_func,
+      ['<C-n>'] = cmp_tab_func,
+      ['<C-p>'] = cmp_stab_func,
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
