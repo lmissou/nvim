@@ -9,12 +9,6 @@ local M = {
     'hrsh7th/cmp-cmdline',
     -- cmp for neovim lua api
     'hrsh7th/cmp-nvim-lua',
-    -- lsp config
-    'neovim/nvim-lspconfig',
-    -- lsp saga (ui)
-    'tami5/lspsaga.nvim',
-    -- lsp icon
-    'onsails/lspkind-nvim',
     -- snippets
     'L3MON4D3/LuaSnip',
     'rafamadriz/friendly-snippets',
@@ -112,14 +106,12 @@ function M.setup()
       { name = 'buffer' },
     })
   })
-
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline('/', {
     sources = {
       { name = 'buffer' }
     }
   })
-
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
     sources = cmp.config.sources({
@@ -128,11 +120,6 @@ function M.setup()
       { name = 'cmdline' }
     })
   })
-
-  -- lsp config
-  -- lsp saga
-  require'lspsaga'.init_lsp_saga()
-
 end
 
 return M

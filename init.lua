@@ -12,5 +12,8 @@ require('core').setup({
     'treesitter',
     'cmp',
     'mason',
+    'lsp',
+    'nullls',
+    'dap',
   }
 })
