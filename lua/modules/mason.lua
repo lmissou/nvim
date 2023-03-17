@@ -90,7 +90,7 @@ function M.setup()
     controls = {
       icons = {
         pause = "",
-        play = "",
+        play = "",
         step_into = "",
         step_over = "",
         step_out = "",
