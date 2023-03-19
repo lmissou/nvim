@@ -3,8 +3,7 @@
 local M = {
   plugins = {
     -- themes
-    'loctvl842/monokai-pro.nvim',
-    'shaunsingh/nord.nvim',
+    'sainnhe/sonokai',
     -- icons
     'kyazdani42/nvim-web-devicons',
     -- dashboard alpha
@@ -35,10 +34,9 @@ function M.setup()
   require('lualine').setup()
   require('bufferline').setup{}
   require('alpha').setup(require('alpha.themes.startify').config)
-  require("monokai-pro").setup({
-    filter = 'octagon'
-  })
-  vim.cmd[[colorscheme monokai-pro]]
+  vim.o.termguicolors = true
+  vim.g.sonokai_style = 'andromeda'
+  vim.cmd[[colorscheme sonokai]]
 end
 
 return M

@@ -7,6 +7,8 @@ local M = {
     'numToStr/Comment.nvim',
     -- auto pairs
     'windwp/nvim-autopairs',
+    -- RGB颜色代码显示
+    'norcalli/nvim-colorizer.lua',
     -- autotag
     'windwp/nvim-ts-autotag',
     -- editorconfig
@@ -23,6 +25,8 @@ function M.setup()
   require('Comment').setup{}
   -- auto pairs
   require('nvim-autopairs').setup()
+  -- colorizer
+  require('colorizer').setup()
   -- auto close and auto rename html tag
   require('nvim-ts-autotag').setup()
   -- project
