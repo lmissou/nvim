@@ -14,6 +14,12 @@ local M = {
     'kylechui/nvim-surround',
     -- 缩进线
     'lukas-reineke/indent-blankline.nvim',
+
+    'kevinhwang91/promise-async',
+    -- 折叠优化
+    'kevinhwang91/nvim-ufo',
+    -- 区域移动文本
+    'booperlv/nvim-gomove',
   }
 }
 
@@ -41,6 +47,38 @@ function M.setup()
   })
   require'nvim-surround'.setup({})
   require("indent_blankline").setup({})
+  -- 折叠优化
+  require('ufo').setup({
+    fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
+      -- 自定义显示文字
+      local newVirtText = {}
+      local suffix = ('...  %d'):format(endLnum - lnum)
+      local sufWidth = vim.fn.strdisplaywidth(suffix)
+      local targetWidth = width - sufWidth
+      local curWidth = 0
+      for _, chunk in ipairs(virtText) do
+        local chunkText = chunk[1]
+        local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+        if targetWidth > curWidth + chunkWidth then
+          table.insert(newVirtText, chunk)
+        else
+          chunkText = truncate(chunkText, targetWidth - curWidth)
+          local hlGroup = chunk[2]
+          table.insert(newVirtText, { chunkText, hlGroup })
+          chunkWidth = vim.fn.strdisplaywidth(chunkText)
+          -- str width returned from truncate() may less than 2nd argument, need padding
+          if curWidth + chunkWidth < targetWidth then
+            suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+          end
+          break
+        end
+        curWidth = curWidth + chunkWidth
+      end
+      table.insert(newVirtText, { suffix, 'MoreMsg' })
+      return newVirtText
+    end
+  })
+  require('gomove').setup()
 end
 
 return M
