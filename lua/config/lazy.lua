@@ -17,8 +17,21 @@ function M.setup()
   vim.opt.rtp:prepend(lazypath)
   require("lazy").setup("plugins", {
     defaults = {
-      event = "VeryLazy"
-    }
+      event = "VeryLazy",
+    },
+    performance = {
+      rtp = {
+        -- disable some rtp plugins
+        disabled_plugins = {
+          "gzip",
+          "netrwPlugin",
+          "tarPlugin",
+          "tohtml",
+          "tutor",
+          "zipPlugin",
+        },
+      },
+    },
   })
 end
 

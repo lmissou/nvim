@@ -44,13 +44,22 @@ function M.setup(opts)
     vim.o[k] = v
   end
   -- 查看时使用相对行号，编辑时使用绝对行号
-  vim.cmd([[
-  augroup relative_numbser
-    autocmd!
-    autocmd InsertEnter * :set norelativenumber
-    autocmd InsertLeave * :set relativenumber
-  augroup END
-  ]])
+  local relative_numbser = vim.api.nvim_create_augroup("relative_numbser", { clear = true })
+  vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+    pattern = "*",
+    group = relative_numbser,
+    callback = function()
+      vim.o.relativenumber = false
+    end,
+  })
+
+  vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+    pattern = "*",
+    group = relative_numbser,
+    callback = function()
+      vim.o.relativenumber = true
+    end,
+  })
 end
 
 return M

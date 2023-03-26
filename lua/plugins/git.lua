@@ -7,6 +7,13 @@ local M = {
     local gs = require("gitsigns")
     gs.setup({
       current_line_blame = true,
+      signs = {
+        add = { text = "+" },
+        change = { text = "~" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
+      },
     })
     local kb = require("config.keybindings")
     kb.bind_key("n", "]c", '&diff ? "]c" : "<cmd>Gitsigns next_hunk<CR>"')

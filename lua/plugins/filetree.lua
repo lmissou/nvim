@@ -10,6 +10,10 @@ local M = {
         enable = true,
         update_cwd = true,
       },
+      sort_by = "case_sensitive",
+      renderer = {
+        group_empty = true,
+      },
     })
     vim.g.nvim_tree_respect_buf_cwd = 1
     local kb = require("config.keybindings")
