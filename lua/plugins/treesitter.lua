@@ -3,6 +3,10 @@
 local M = {
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      -- 彩虹括号
+      "HiPhish/nvim-ts-rainbow2",
+    },
     config = function()
       local ts = require("nvim-treesitter.configs")
       ts.setup({
@@ -45,8 +49,6 @@ local M = {
       vim.o.foldlevel = 99
     end,
   },
-  -- 彩虹括号
-  { "HiPhish/nvim-ts-rainbow2" },
 }
 
 return M
