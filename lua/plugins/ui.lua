@@ -5,11 +5,18 @@ local kb = require("config.keybindings")
 local M = {
   -- themes
   {
-    "sainnhe/sonokai",
+    "catppuccin/nvim",
+    name = "catppuccin",
     config = function()
       vim.o.termguicolors = true
-      vim.g.sonokai_style = "andromeda"
-      vim.cmd([[colorscheme sonokai]])
+      require("catppuccin").setup({
+        -- flavour = "frappe", -- latte, frappe, macchiato, mocha
+        background = {
+          light = "latte",
+          dark = "frappe",
+        },
+      })
+      vim.cmd([[colorscheme catppuccin]])
     end,
   },
   -- dashboard alpha
@@ -31,7 +38,7 @@ local M = {
           hover = {
             enabled = true,
             delay = 200,
-            reveal = { 'close' }
+            reveal = { "close" },
           },
           -- always_show_bufferline = false,
           -- 使用 nvim 内置lsp
