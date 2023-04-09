@@ -17,6 +17,7 @@ local M = {
         },
       })
       vim.cmd([[colorscheme catppuccin]])
+      vim.o.background = "dark"
     end,
   },
   -- dashboard alpha
