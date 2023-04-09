@@ -24,9 +24,6 @@ local M = {
       vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
       -- Mappings.
-      vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
-      vim.api.nvim_set_keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-      vim.api.nvim_set_keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
       -- vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
       -- See `:help vim.lsp.*` for documentation on any of the below functions
       vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
@@ -40,6 +37,9 @@ local M = {
       vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
       vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", "<cmd>Lspsaga rename<CR>", opts)
       vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>la", "<cmd>Lspsaga code_action<CR>", opts)
+      vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>le", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
+      vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+      vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
     end
     -- Setup mason-lspconfig.
     mason_lspconfig.setup({})
