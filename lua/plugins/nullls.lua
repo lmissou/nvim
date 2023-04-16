@@ -10,9 +10,11 @@ local M = {
     require("null-ls").setup({})
     require("mason-null-ls").setup({
       automatic_setup = true,
-      function(source_name, methods)
-        require("mason-null-ls").default_setup(source_name, methods)
-      end,
+      handlers = {
+        function(source_name, methods)
+          require("mason-null-ls").default_setup(source_name, methods)
+        end,
+      },
     })
   end,
 }
