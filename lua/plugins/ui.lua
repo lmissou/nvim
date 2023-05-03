@@ -56,6 +56,12 @@ local M = {
           -- 左侧让出 nvim-tree 的位置
           offsets = {
             {
+              filetype = "neo-tree",
+              text = "File Explorer",
+              highlight = "Directory",
+              text_align = "left",
+            },
+            {
               filetype = "NvimTree",
               text = "File Explorer",
               highlight = "Directory",

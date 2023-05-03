@@ -36,6 +36,16 @@ local M = {
       require("telescope").load_extension("fzf")
     end,
   },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    config = function()
+      require("telescope").load_extension("file_browser")
+      local kb = require("config.keybindings")
+      kb.add_prefix("f", "File")
+      kb.bind_leader("fb", "<cmd>Telescope file_browser<cr>", "File Browser")
+    end,
+  },
 }
 
 return M
