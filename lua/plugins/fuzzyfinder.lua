@@ -18,7 +18,7 @@ local M = {
       })
       local kb = require("config.keybindings")
       kb.add_prefix("b", "Buffer")
-      kb.bind_leader("bb", "<cmd>Telescope buffers<cr>", "Buffers")
+      kb.bind_leader("bl", "<cmd>Telescope buffers<cr>", "Buffers")
       kb.add_prefix("f", "File")
       kb.bind_leader("ff", "<cmd>Telescope find_files<cr>", "Find File")
       kb.bind_leader("fp", "<cmd>Telescope projects<cr>", "Find Project")

@@ -33,17 +33,26 @@ local M = {
   {
     "akinsho/bufferline.nvim",
     config = function()
+      local kb = require("config.keybindings")
+      kb.add_prefix("b", "Buffer")
+      kb.bind_leader("bo", "<cmd>BufferLineCloseLeft<cr><cmd>BufferLineCloseRight<cr>", "Only")
+      kb.bind_leader("bb", "<cmd>BufferLinePick<cr>", "Pick")
       require("bufferline").setup({
         options = {
-          separator_style = "slant",
+          separator_style =  "slant",
+          always_show_bufferline = false,
+          buffer_close_icon = "",
           hover = {
             enabled = true,
             delay = 200,
             reveal = { "close" },
           },
-          -- always_show_bufferline = false,
           -- 使用 nvim 内置lsp
           diagnostics = "nvim_lsp",
+          diagnostics_indicator = function(count, level, diagnostics_dict, context)
+            local icon = level:match("error") and " " or " "
+            return " " .. icon .. count
+          end,
           -- 左侧让出 nvim-tree 的位置
           offsets = {
             {
