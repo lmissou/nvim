@@ -16,7 +16,7 @@ local M = {
     })
     local kb = require("config.keybindings")
     kb.add_prefix("f", "File")
-    kb.bind_leader("ft", "<cmd>NeoTreeFocusToggle<cr>", "Open File Tree")
+    kb.bind_leader("ft", "<cmd>Neotree<cr>", "Open File Tree")
   end,
 }
 
