@@ -10,6 +10,15 @@ local M = {
     "onsails/lspkind-nvim",
     -- mason-lspconfig
     "williamboman/mason-lspconfig.nvim",
+    -- flutter
+    {
+      "akinsho/flutter-tools.nvim",
+      lazy = false,
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "stevearc/dressing.nvim", -- optional for vim.ui.select
+      },
+    },
   },
   config = function()
     -- lsp saga
@@ -51,6 +60,14 @@ local M = {
           on_attach = on_attach,
         })
       end,
+    })
+    -- Setup flutter(dart) lsp
+    local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    require("flutter-tools").setup({
+      lsp = {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      },
     })
   end,
 }
