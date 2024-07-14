@@ -74,13 +74,8 @@ local M = {
           -- Keep original functionality
           mason_dap.default_setup(config)
         end,
-      }
+      },
     })
-    -- mason_dap.setup_handlers({
-    --   function(source_name)
-    --     require("mason-nvim-dap.automatic_setup")(source_name)
-    --   end,
-    -- })
     local kb = require("config.keybindings")
     kb.bind_key("n", "<F5>", "<cmd>DapContinue<cr>")
     kb.bind_key("n", "<F10>", "<cmd>DapTerminate<cr>")
@@ -88,6 +83,13 @@ local M = {
     kb.bind_key("n", "<F6>", "<cmd>DapStepOver<cr>")
     kb.bind_key("n", "<F7>", "<cmd>DapStepInto<cr>")
     kb.bind_key("n", "<F8>", "<cmd>DapStepOut<cr>")
+    kb.add_prefix("d", "Debug")
+    kb.bind_leader("dc", "<cmd>DapContinue<cr>", "Continue")
+    kb.bind_leader("dq", "<cmd>DapTerminate<cr>", "Terminate")
+    kb.bind_leader("dt", "<cmd>DapToggleBreakpoint<cr>", "Toggle Breakpoint")
+    kb.bind_leader("ds", "<cmd>DapStepOver<cr>", "Step Over")
+    kb.bind_leader("di", "<cmd>DapStepInto<cr>", "Step Into")
+    kb.bind_leader("do", "<cmd>DapStepOut<cr>", "Setp Out")
   end,
 }
 
