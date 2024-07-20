@@ -20,6 +20,10 @@ local M = {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
+  keys = {
+    { "<leader>f",  desc = "File" },
+    { "<leader>ft", mode = "n",   "<cmd>NvimTreeToggle<cr>", desc = "File Tree Toggle" },
+  },
   config = function()
     require("nvim-tree").setup({
       sort = {
@@ -36,9 +40,6 @@ local M = {
       },
       on_attach = on_tree_attach,
     })
-    local kb = require("config.keybindings")
-    kb.add_prefix("f", "File")
-    kb.bind_leader("ft", "<cmd>NvimTreeToggle<cr>", "File Tree Toggle")
   end,
 }
 

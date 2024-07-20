@@ -12,7 +12,6 @@ local M = {
             override_generic_sorter = true, -- override the generic sorter
             override_file_sorter = true,    -- override the file sorter
             case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-            -- the default case_mode is "smart_case"
           },
         },
       })
@@ -29,11 +28,12 @@ local M = {
   {
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<leader>f",          desc = "File" },
+      { "<leader>fb", mode = "n",   "<cmd>Telescope file_browser<cr>", desc = "File Browser" },
+    },
     config = function()
       require("telescope").load_extension("file_browser")
-      local kb = require("config.keybindings")
-      kb.add_prefix("f", "File")
-      kb.bind_leader("fb", "<cmd>Telescope file_browser<cr>", "File Browser")
     end,
   },
 }

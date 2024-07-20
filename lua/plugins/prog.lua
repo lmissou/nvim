@@ -36,6 +36,7 @@ local M = {
   -- project (change pwd)
   {
     "ahmedkhalf/project.nvim",
+    keys = { "<leader>fp" },
     config = function()
       require("project_nvim").setup({})
       local status_ok, telescope = pcall(require, "telescope")

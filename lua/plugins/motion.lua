@@ -5,6 +5,7 @@ local M = {
     "folke/flash.nvim",
     opts = {},
     keys = {
+      "f", "F", "t", "T", ";", ",",
       { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
       { "g/", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
       { "gw", mode = { "n", "x", "o" }, function()

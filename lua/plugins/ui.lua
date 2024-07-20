@@ -7,6 +7,7 @@ local M = {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    lazy = false,
     config = function()
       vim.o.termguicolors = true
       require("catppuccin").setup({
@@ -23,31 +24,44 @@ local M = {
   -- dashboard alpha
   {
     "goolord/alpha-nvim",
+    lazy = false,
+    keys = {
+      { "<leader>w", desc = "Window" },
+      {
+        "<leader>ws",
+        mode = "n",
+        "<cmd>Alpha<cr>",
+        desc = "Startify Window",
+      },
+    },
     config = function()
       require("alpha").setup(require("alpha.themes.startify").config)
-      kb.add_prefix("w", "Window")
-      kb.bind_leader("ws", "<cmd>Alpha<cr>", "Startify Window")
+    end,
+  },
+  -- lualine
+  {
+    "nvim-lualine/lualine.nvim",
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("lualine").setup({})
     end,
   },
   -- buffer line
   {
     "akinsho/bufferline.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = false,
+    keys = {
+      { "<leader>b", mode = "n", desc = "Buffer" },
+      { "<leader>bo", mode = "n", "<cmd>BufferLineCloseLeft<cr><cmd>BufferLineCloseRight<cr>", desc = "Only" },
+      { "<leader>bb", mode = "n", "<cmd>BufferLinePick<cr>", desc = "Pick" },
+    },
     config = function()
-      local kb = require("config.keybindings")
-      kb.add_prefix("b", "Buffer")
-      kb.bind_leader("bo", "<cmd>BufferLineCloseLeft<cr><cmd>BufferLineCloseRight<cr>", "Only")
-      kb.bind_leader("bb", "<cmd>BufferLinePick<cr>", "Pick")
       require("bufferline").setup({
         options = {
           separator_style = "slant",
           always_show_bufferline = false,
-          buffer_close_icon = "",
-          hover = {
-            enabled = true,
-            delay = 200,
-            reveal = { "close" },
-          },
           -- 使用 nvim 内置lsp
           diagnostics = "nvim_lsp",
           diagnostics_indicator = function(count, level, diagnostics_dict, context)
@@ -71,14 +85,6 @@ local M = {
           },
         },
       })
-    end,
-  },
-  -- lualine
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    config = function()
-      require("lualine").setup()
     end,
   },
 }

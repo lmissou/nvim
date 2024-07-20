@@ -3,6 +3,8 @@
 local M = {
   -- terminal
   "akinsho/toggleterm.nvim",
+  keys = { "<leader>t" },
+  cmd = "ToggleTerm",
   config = function()
     -- use powershell(on windows)
     if vim.fn.has("win32") then

@@ -2,11 +2,11 @@
 
 local M = {
   "akinsho/flutter-tools.nvim",
-  lazy = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "stevearc/dressing.nvim", -- optional for vim.ui.select
   },
+  ft = "dart",
   config = function()
     -- Setup flutter(dart) lsp
     local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())

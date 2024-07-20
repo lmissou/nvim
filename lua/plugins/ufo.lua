@@ -33,6 +33,7 @@ local M = {
   dependencies = {
     "kevinhwang91/promise-async",
   },
+  keys = { "z" },
   config = function()
     require("ufo").setup({
       provider_selector = function(bufnr, filetype, buftype)
