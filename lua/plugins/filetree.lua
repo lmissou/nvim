@@ -1,22 +1,44 @@
 ---------- file tree
 
+local function on_tree_attach(bufnr)
+  local api = require("nvim-tree.api")
+
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+  vim.keymap.set("n", "<C-[>", api.tree.change_root_to_parent, opts("Up"))
+  vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
+end
+
 local M = {
-  -- file tree
-  "nvim-neo-tree/neo-tree.nvim",
+  "nvim-tree/nvim-tree.lua",
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
   config = function()
-    require("neo-tree").setup({
-      -- close_if_last_window = true,
-      window = {
-        position = "left",
-        width = 36,
-        mappings = {
-          ["o"] = "open",
-        },
+    require("nvim-tree").setup({
+      sort = {
+        sorter = "case_sensitive",
       },
+      view = {
+        width = 40,
+      },
+      renderer = {
+        group_empty = true,
+      },
+      filters = {
+        dotfiles = true,
+      },
+      on_attach = on_tree_attach,
     })
     local kb = require("config.keybindings")
     kb.add_prefix("f", "File")
-    kb.bind_leader("ft", "<cmd>Neotree<cr>", "Open File Tree")
+    kb.bind_leader("ft", "<cmd>NvimTreeToggle<cr>", "File Tree Toggle")
   end,
 }
 

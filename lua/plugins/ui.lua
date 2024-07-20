@@ -32,6 +32,7 @@ local M = {
   -- buffer line
   {
     "akinsho/bufferline.nvim",
+    dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       local kb = require("config.keybindings")
       kb.add_prefix("b", "Buffer")
@@ -39,7 +40,7 @@ local M = {
       kb.bind_leader("bb", "<cmd>BufferLinePick<cr>", "Pick")
       require("bufferline").setup({
         options = {
-          separator_style =  "slant",
+          separator_style = "slant",
           always_show_bufferline = false,
           buffer_close_icon = "",
           hover = {
@@ -75,13 +76,10 @@ local M = {
   -- lualine
   {
     "nvim-lualine/lualine.nvim",
+    dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       require("lualine").setup()
     end,
-  },
-  -- icons
-  {
-    "nvim-tree/nvim-web-devicons",
   },
 }
 

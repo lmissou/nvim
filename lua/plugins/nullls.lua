@@ -2,7 +2,7 @@
 
 local M = {
   -- null-ls (linter)
-  "Carlosiano/null-ls.nvim",
+  "nvimtools/none-ls.nvim",
   dependencies = {
     "jay-babu/mason-null-ls.nvim",
   },

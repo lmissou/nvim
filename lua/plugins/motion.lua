@@ -3,12 +3,11 @@
 local M = {
   {
     "folke/flash.nvim",
-    ---@type Flash.Config
     opts = {},
     keys = {
       { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
       { "g/", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "gw", mode = { "n", "x", "o" }, function() 
+      { "gw", mode = { "n", "x", "o" }, function()
         require("flash").jump({
           pattern = ".", -- initialize pattern with any char
           search = {

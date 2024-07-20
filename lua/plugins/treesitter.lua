@@ -5,13 +5,11 @@ local M = {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       -- 彩虹括号
-      "HiPhish/nvim-ts-rainbow2",
+      "hiphish/rainbow-delimiters.nvim",
     },
     config = function()
       local ts = require("nvim-treesitter.configs")
       ts.setup({
-        -- auto tag
-        autotag = { enable = true },
         -- 高亮
         highlight = { enable = true },
         -- 缩进
@@ -37,11 +35,13 @@ local M = {
           -- list of languages you want to disable the plugin for
           disable = {},
           -- Which query to use for finding delimiters
-          query = "rainbow-parens",
+          query = "rainbow-delimiters",
           -- Highlight the entire buffer all at once
-          strategy = require("ts-rainbow.strategy.global"),
+          strategy = require("rainbow-delimiters.strategy.global"),
         },
       })
+      -- auto tag
+      require("nvim-ts-autotag").setup()
       -- 折叠代码
       vim.o.foldmethod = "expr"
       vim.o.foldexpr = "nvim_treesitter#foldexpr()"

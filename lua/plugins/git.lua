@@ -16,8 +16,6 @@ local M = {
       },
     })
     local kb = require("config.keybindings")
-    kb.bind_key("n", "]c", '&diff ? "]c" : "<cmd>Gitsigns next_hunk<CR>"')
-    kb.bind_key("n", "[c", '&diff ? "[c" : "<cmd>Gitsigns prev_hunk<CR>"')
     kb.add_prefix("g", "Git")
     kb.bind_leader("gs", '<cmd>Gitsigns stage_hunk<cr>', 'Stage hunk')
     kb.bind_leader("gr", '<cmd>Gitsigns reset_hunk<cr>', 'Reset hunk')

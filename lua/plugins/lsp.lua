@@ -29,15 +29,15 @@ local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
     -- lsp saga (ui)
-    "tami5/lspsaga.nvim",
+    "nvimdev/lspsaga.nvim",
     -- lsp icon
-    "onsails/lspkind-nvim",
+    "onsails/lspkind.nvim",
     -- mason-lspconfig
     "williamboman/mason-lspconfig.nvim",
   },
   config = function()
     -- lsp saga
-    require("lspsaga").init_lsp_saga()
+    require("lspsaga").setup()
     -- lsp config
     local mason_lspconfig = require("mason-lspconfig")
     -- Setup mason-lspconfig.

@@ -5,11 +5,10 @@ local M = {
   config = function()
     vim.o.timeout = true
     vim.o.timeoutlen = 300
-    require("which-key").setup({
-      -- or leave it empty to use the default settings
-      -- your configuration comes here
-      -- refer to the configuration section below
-    })
+    local kb = require("config.keybindings")
+    kb.bind_leader("?", function()
+      require("which-key").show({ global = false })
+    end, "Buffer Local Keymaps")
   end,
 }
 
