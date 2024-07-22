@@ -5,13 +5,15 @@ local M = {
     -- fuzzy finder
     "nvim-telescope/telescope.nvim",
     keys = {
-      { "b", desc = "Buffer" },
-      { "bl", mode = "n", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "f", desc = "File" },
-      { "ff", mode = "n", "<cmd>Telescope find_files<cr>", desc = "Find File" },
-      { "fp", mode = "n", "<cmd>Telescope projects<cr>", desc = "Find Project" },
-      { "fr", mode = "n", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent File" },
-      { "fs", mode = "n", "<cmd>Telescope live_grep<cr>", desc = "Search string" },
+      { "<leader>b", desc = "Buffer" },
+      { "<leader>bl", mode = "n", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+      { "<leader>f", desc = "File" },
+      { "<leader>ff", mode = "n", "<cmd>Telescope find_files<cr>", desc = "Find File" },
+      { "<C-p>", mode = "n", "<cmd>Telescope find_files<cr>", desc = "Find File" },
+      { "<leader>fp", mode = "n", "<cmd>Telescope projects<cr>", desc = "Find Project" },
+      { "<leader>fr", mode = "n", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent File" },
+      { "<leader>fs", mode = "n", "<cmd>Telescope live_grep<cr>", desc = "Search string" },
+      { "<leader>fc", mode = "n", "<cmd>cd %:h<cr>", desc = "Ch pwd to current buffer" },
     },
     config = function()
       require("telescope").setup({
@@ -24,14 +26,6 @@ local M = {
           },
         },
       })
-      -- local kb = require("config.keybindings")
-      -- kb.add_prefix("b", "Buffer")
-      -- kb.bind_leader("bl", "<cmd>Telescope buffers<cr>", "Buffers")
-      -- kb.add_prefix("f", "File")
-      -- kb.bind_leader("ff", "<cmd>Telescope find_files<cr>", "Find File")
-      -- kb.bind_leader("fp", "<cmd>Telescope projects<cr>", "Find Project")
-      -- kb.bind_leader("fr", "<cmd>Telescope oldfiles<cr>", "Open Recent File")
-      -- kb.bind_leader("fs", "<cmd>Telescope live_grep<cr>", "Search string")
     end,
   },
   {

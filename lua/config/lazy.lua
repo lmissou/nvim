@@ -15,7 +15,15 @@ function M.setup()
     })
   end
   vim.opt.rtp:prepend(lazypath)
-  require("lazy").setup("plugins", {
+  local lazy_spec = { import = "plugins" }
+  if vim.g.vscode then
+    lazy_spec = {
+      { import = "plugins.basic" },
+      { import = "plugins.motion" },
+    }
+  end
+  require("lazy").setup({
+    spec = lazy_spec,
     defaults = {
       event = "VeryLazy",
     },

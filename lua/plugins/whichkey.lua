@@ -5,6 +5,7 @@ local M = {
   config = function()
     vim.o.timeout = true
     vim.o.timeoutlen = 300
+    require("which-key").setup({})
     local kb = require("config.keybindings")
     kb.bind_leader("?", function()
       require("which-key").show({ global = false })
