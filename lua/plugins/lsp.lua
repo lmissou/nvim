@@ -45,10 +45,19 @@ local M = {
     mason_lspconfig.setup_handlers({
       function(server_name)
         local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-        require("lspconfig")[server_name].setup({
+        local server_config = {
           capabilities = capabilities,
           on_attach = on_lsp_attach,
-        })
+        }
+        -- 修复volar2报错问题
+        if server_name == "volar" then
+          server_config.init_options = {
+            vue = {
+              hybridMode = false,
+            },
+          }
+        end
+        require("lspconfig")[server_name].setup(server_config)
       end,
     })
   end,
