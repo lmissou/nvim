@@ -20,6 +20,9 @@ local function on_tree_attach(bufnr)
       completion = "file",
       default = ".",
     }, function(dir)
+      if dir == nil then
+        return
+      end
       if dir == "." then
         dir = vim.fn.getcwd()
       end
