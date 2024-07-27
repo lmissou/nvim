@@ -1,15 +1,15 @@
 ---------- which-key
 
 local M = {
-  "folke/which-key.nvim",
+  'folke/which-key.nvim',
+  opts = {},
   config = function()
     vim.o.timeout = true
     vim.o.timeoutlen = 300
-    require("which-key").setup({})
-    local kb = require("config.keybindings")
-    kb.bind_leader("?", function()
-      require("which-key").show({ global = false })
-    end, "Buffer Local Keymaps")
+    local kb = require('config.keybindings')
+    kb.bind_leader('?', function()
+      require('which-key').show({ global = false })
+    end, 'Buffer Local Keymaps')
   end,
 }
 

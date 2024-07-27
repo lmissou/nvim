@@ -3,51 +3,47 @@
 local M = {
   -- comment
   {
-    "numToStr/Comment.nvim",
+    'numToStr/Comment.nvim',
+    dependencies = 'JoosepAlviste/nvim-ts-context-commentstring',
     config = function()
-      require("Comment").setup({})
+      require('Comment').setup({
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      })
     end,
   },
   -- auto pairs
   {
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup()
-    end,
+    'windwp/nvim-autopairs',
+    opts = {},
   },
   -- RGB颜色代码显示
   {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup()
-    end,
-  },
-  -- autotag
-  {
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
+    'norcalli/nvim-colorizer.lua',
+    opts = { '*' },
   },
   -- editorconfig
   {
-    "editorconfig/editorconfig-vim",
+    'editorconfig/editorconfig-vim',
   },
   -- project (change pwd)
   {
-    "ahmedkhalf/project.nvim",
-    keys = { "<leader>fp" },
+    'ahmedkhalf/project.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+    },
+    lazy = false,
+    keys = {
+      { '<leader>fp', mode = { 'n', 'v' }, '<cmd>Telescope projects<cr>', desc = 'Find Project' },
+    },
     config = function()
-      require("project_nvim").setup({})
-      local status_ok, telescope = pcall(require, "telescope")
-      if status_ok then
-        telescope.load_extension("projects")
-      end
+      require('project_nvim').setup({})
+      local telescope = require('telescope')
+      telescope.load_extension('projects')
     end,
   },
   -- markdown preview
   {
-    "iamcco/markdown-preview.nvim",
+    'iamcco/markdown-preview.nvim',
   },
 }
 

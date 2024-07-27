@@ -1,6 +1,6 @@
-local lazy = require("config.lazy")
-local opt = require("config.options")
-local kb = require("config.keybindings")
+local lazy = require('config.lazy')
+local opt = require('config.options')
+local kb = require('config.keybindings')
 
 local M = {}
 

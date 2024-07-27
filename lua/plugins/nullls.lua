@@ -2,21 +2,21 @@
 
 local M = {
   -- null-ls (linter)
-  "nvimtools/none-ls.nvim",
+  'nvimtools/none-ls.nvim',
   dependencies = {
-    "jay-babu/mason-null-ls.nvim",
-  },
-  config = function()
-    require("null-ls").setup({})
-    require("mason-null-ls").setup({
-      automatic_setup = true,
-      handlers = {
-        function(source_name, methods)
-          require("mason-null-ls").default_setup(source_name, methods)
-        end,
+    {
+      'jay-babu/mason-null-ls.nvim',
+      opts = {
+        automatic_setup = true,
+        handlers = {
+          function(source_name, methods)
+            require('mason-null-ls').default_setup(source_name, methods)
+          end,
+        },
       },
-    })
-  end,
+    },
+  },
+  opts = {},
 }
 
 return M
