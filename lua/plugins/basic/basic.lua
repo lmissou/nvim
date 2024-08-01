@@ -10,12 +10,6 @@ local M = {
     'kylechui/nvim-surround',
     opts = {},
   },
-  -- 缩进线
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    opts = {},
-  },
   -- 区域移动文本 Alt + h/j/k/l
   {
     'fedepujol/move.nvim',

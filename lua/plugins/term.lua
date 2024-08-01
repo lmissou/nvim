@@ -38,6 +38,8 @@ local M = {
       local opts = { noremap = true }
       vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
       vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts) -- hidden term
+      vim.api.nvim_buf_set_keymap(0, 'n', '<C-h>', [[<C-\><C-n><C-W>h]], opts) -- hidden term
+      vim.api.nvim_buf_set_keymap(0, 'v', '<C-h>', [[<C-\><C-n><C-W>h]], opts) -- hidden term
     end
 
     -- only want these mappings for toggle term use term://*toggleterm#* instead

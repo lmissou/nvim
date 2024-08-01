@@ -3,6 +3,7 @@
 local M = {
   -- git
   'lewis6991/gitsigns.nvim',
+  lazy = false,
   keys = {
     { '<leader>g',  mode = { 'n', 'v' }, 'Git' },
     { '<leader>gs', mode = { 'n', 'v' }, '<cmd>Gitsigns stage_hunk<cr>', 'Stage hunk' },

@@ -53,7 +53,7 @@ local M = {
     keys = {
       { '<leader>b', mode = { 'n', 'v' }, desc = 'Buffer' },
       { '<leader>bo', mode = { 'n', 'v' }, '<cmd>BufferLineCloseLeft<cr><cmd>BufferLineCloseRight<cr>', desc = 'Only' },
-      { '<leader>bb', mode = { 'n', 'v' }, '<cmd>BufferLinePick<cr>', desc = 'Pick' },
+      { '<leader>bl', mode = { 'n', 'v' }, '<cmd>BufferLinePick<cr>', desc = 'Pick' },
     },
     opts = {
       options = {

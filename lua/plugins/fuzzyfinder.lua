@@ -6,7 +6,7 @@ local M = {
     'nvim-telescope/telescope.nvim',
     keys = {
       { '<leader>b', desc = 'Buffer' },
-      { '<leader>bl', mode = { 'n', 'v' }, '<cmd>Telescope buffers<cr>', desc = 'Buffers' },
+      { '<leader>bb', mode = { 'n', 'v' }, '<cmd>Telescope buffers<cr>', desc = 'Buffers' },
       { '<leader>f', desc = 'File' },
       { '<leader>ff', mode = { 'n', 'v' }, '<cmd>Telescope find_files<cr>', desc = 'Find File' },
       { '<C-p>', mode = { 'n', 'v' }, '<cmd>Telescope find_files<cr>', desc = 'Find File' },

@@ -16,6 +16,12 @@ local M = {
     'windwp/nvim-autopairs',
     opts = {},
   },
+  -- 缩进线
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    opts = {},
+  },
   -- RGB颜色代码显示
   {
     'norcalli/nvim-colorizer.lua',
