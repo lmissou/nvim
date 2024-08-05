@@ -17,7 +17,7 @@ local M = {
       ',',
       {
         'S',
-        mode = { 'n', 'x', 'o' },
+        mode = { 'n', 'x' },
         function()
           require('flash').treesitter()
         end,
@@ -55,7 +55,7 @@ local M = {
     keys = {
       {
         's',
-        mode = { 'n', 'x', 'o' },
+        mode = { 'n', 'x' },
         function()
           require('flash-zh').jump({})
         end,
@@ -63,7 +63,7 @@ local M = {
       },
       {
         'g/',
-        mode = { 'n', 'x', 'o' },
+        mode = { 'n', 'x' },
         function()
           require('flash-zh').jump({})
         end,
@@ -71,7 +71,7 @@ local M = {
       },
       {
         'gw',
-        mode = { 'n', 'x', 'o' },
+        mode = { 'n', 'x' },
         function()
           require('flash-zh').jump({
             pattern = '.', -- initialize pattern with any char
