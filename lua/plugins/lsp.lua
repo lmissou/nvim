@@ -26,14 +26,17 @@ local M = {
   -- lsp config
   'neovim/nvim-lspconfig',
   dependencies = {
+    -- cmp
+    'saghen/blink.cmp',
     -- lsp saga (ui)
     'nvimdev/lspsaga.nvim',
-    -- lsp icon
-    'onsails/lspkind.nvim',
-    -- mason-lspconfig
+    -- mason
+    'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
   },
   config = function()
+    -- mason
+    require('mason').setup()
     -- lsp saga
     require('lspsaga').setup()
     -- lsp config
@@ -42,7 +45,7 @@ local M = {
     mason_lspconfig.setup({})
     mason_lspconfig.setup_handlers({
       function(server_name)
-        local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+        local capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
         local server_config = {
           capabilities = capabilities,
           on_attach = on_lsp_attach,
