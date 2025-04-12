@@ -31,22 +31,6 @@ local M = {
   {
     'editorconfig/editorconfig-vim',
   },
-  -- project (change pwd)
-  {
-    'ahmedkhalf/project.nvim',
-    dependencies = {
-      'nvim-telescope/telescope.nvim',
-    },
-    lazy = false,
-    keys = {
-      { '<leader>fp', mode = { 'n', 'v' }, '<cmd>Telescope projects<cr>', desc = 'Find Project' },
-    },
-    config = function()
-      require('project_nvim').setup({})
-      local telescope = require('telescope')
-      telescope.load_extension('projects')
-    end,
-  },
   -- markdown preview
   {
     'iamcco/markdown-preview.nvim',
