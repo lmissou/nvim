@@ -35,9 +35,29 @@ local M = {
   dependencies = {
     'nvim-tree/nvim-web-devicons',
   },
+  opts = {
+    sort = {
+      sorter = 'case_sensitive',
+    },
+    view = {
+      width = 40,
+    },
+    renderer = {
+      group_empty = true,
+    },
+    filters = {
+      dotfiles = true,
+    },
+    on_attach = on_tree_attach,
+  },
   keys = {
-    { '<leader>f',  desc = 'File' },
-    { '<leader>ft', mode = { 'n', 'v' }, '<cmd>NvimTreeToggle<cr>', desc = 'File Tree Toggle' },
+    { '<leader>f', desc = 'File' },
+    {
+      '<leader>ft',
+      mode = { 'n', 'v' },
+      function() require('nvim-tree.api').tree.toggle() end,
+      desc = 'File Tree Toggle'
+    },
     {
       '<leader>fT',
       mode = { 'n', 'v' },
@@ -54,29 +74,13 @@ local M = {
           if dir == './' then
             dir = vim.fn.getcwd()
           end
+          vim.fn.chdir(dir)
           api.tree.open(dir)
         end)
       end,
       desc = 'File Tree Open(input path)'
     },
   },
-  config = function()
-    require('nvim-tree').setup({
-      sort = {
-        sorter = 'case_sensitive',
-      },
-      view = {
-        width = 40,
-      },
-      renderer = {
-        group_empty = true,
-      },
-      filters = {
-        dotfiles = true,
-      },
-      on_attach = on_tree_attach,
-    })
-  end,
 }
 
 return M
