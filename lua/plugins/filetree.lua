@@ -1,86 +1,32 @@
 ---------- file tree
 
-local function on_tree_attach(bufnr)
-  local api = require('nvim-tree.api')
-
-  local function opts(desc)
-    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-  end
-
-  -- default mappings
-  api.config.mappings.default_on_attach(bufnr)
-
-  -- custom mappings
-  vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
-  vim.keymap.set('n', '<C-[>', api.tree.change_root_to_parent, opts('Up'))
-  vim.keymap.set('n', 'gc', function()
-    vim.ui.input({
-      prompt = 'Enter path',
-      completion = 'file',
-      default = './',
-    }, function(dir)
-      if dir == nil then
-        return
-      end
-      if dir == './' then
-        dir = vim.fn.getcwd()
-      end
-      api.tree.change_root(dir)
-    end)
-  end, opts('Change current dir'))
-end
-
 local M = {
-  'nvim-tree/nvim-tree.lua',
+  "nvim-neo-tree/neo-tree.nvim",
   dependencies = {
-    'nvim-tree/nvim-web-devicons',
+    "nvim-lua/plenary.nvim",
+    "MunifTanjim/nui.nvim",
+    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
   },
+  -- lazy = false, -- neo-tree will lazily load itself
+  ---@module "neo-tree"
+  ---@type neotree.Config?
   opts = {
-    sort = {
-      sorter = 'case_sensitive',
-    },
-    view = {
-      width = 40,
-    },
-    renderer = {
-      group_empty = true,
-    },
-    filters = {
-      dotfiles = true,
-    },
-    on_attach = on_tree_attach,
+    -- fill any relevant options here
+    window = {
+      mappings = {
+        ["<space>"] = "",
+        ["<tab>"] = "toggle_node",
+        ["."] = "toggle_hidden",
+        ["<C-[>"] = "navigate_up",
+        ["<C-]>"] = "set_root",
+      }
+    }
   },
   keys = {
-    { '<leader>f', desc = 'File' },
-    {
-      '<leader>ft',
-      mode = { 'n', 'v' },
-      function() require('nvim-tree.api').tree.toggle() end,
-      desc = 'File Tree Toggle'
-    },
-    {
-      '<leader>fT',
-      mode = { 'n', 'v' },
-      function()
-        local api = require('nvim-tree.api')
-        vim.ui.input({
-          prompt = 'Enter path',
-          completion = 'file',
-          default = './',
-        }, function(dir)
-          if dir == nil then
-            return
-          end
-          if dir == './' then
-            dir = vim.fn.getcwd()
-          end
-          vim.fn.chdir(dir)
-          api.tree.open(dir)
-        end)
-      end,
-      desc = 'File Tree Open(input path)'
-    },
-  },
+    { '<leader>f',  desc = 'File' },
+    { '<leader>ft', mode = { 'n' }, '<cmd>Neotree left toggle<cr>',  desc = 'File Tree toggle' },
+    { '<leader>fe', mode = { 'n' }, '<cmd>Neotree float toggle<cr>', desc = 'File Tree (float)' },
+  }
 }
 
 return M
