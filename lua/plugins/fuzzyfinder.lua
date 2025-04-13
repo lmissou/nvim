@@ -12,28 +12,7 @@ local M = {
       { '<leader>ff', mode = { 'n', 'v' }, '<cmd>Telescope find_files<cr>', desc = 'Find File' },
       { '<C-p>',      mode = { 'n', 'v' }, '<cmd>Telescope find_files<cr>', desc = 'Find File' },
       { '<leader>fr', mode = { 'n', 'v' }, '<cmd>Telescope oldfiles<cr>',   desc = 'Open Recent File' },
-      { '<leader>fs', mode = { 'n', 'v' }, '<cmd>Telescope live_grep<cr>',  desc = 'Search string' },
-      {
-        '<leader>fc',
-        mode = { 'n', 'v' },
-        function()
-          vim.ui.input({
-            prompt = 'Enter path',
-            completion = 'file',
-            default = '.',
-          }, function(dir)
-            if dir == nil then
-              return
-            end
-            if dir == '.' then
-              -- 获取当前文件路径
-              dir = vim.fn.expand('%:h')
-            end
-            vim.api.nvim_set_current_dir(dir)
-          end)
-        end,
-        desc = 'Ch pwd to current buffer',
-      },
+      { '<leader>fg', mode = { 'n', 'v' }, '<cmd>Telescope live_grep<cr>',  desc = 'Search string' },
     },
     config = function()
       require('telescope').setup({
@@ -49,17 +28,6 @@ local M = {
       -- To get fzf loaded and working with telescope, you need to call
       -- load_extension, somewhere after setup function:
       require('telescope').load_extension('fzf')
-    end,
-  },
-  {
-    'nvim-telescope/telescope-file-browser.nvim',
-    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
-    keys = {
-      { '<leader>f',  desc = 'File' },
-      { '<leader>fb', mode = { 'n', 'v' }, '<cmd>Telescope file_browser<cr>', desc = 'File Browser' },
-    },
-    config = function()
-      require('telescope').load_extension('file_browser')
     end,
   },
 }

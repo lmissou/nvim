@@ -64,6 +64,23 @@ function M.setup()
   M.bind_leader('bn', '<cmd>bnext<cr>', 'Next buffer')
   M.bind_leader('bp', '<cmd>bprevious<cr>', 'Previous buffer')
   M.bind_leader('bo', '<cmd>execute \'%bd|e#|normal `"\'|bdelete#<cr>', 'Only')
+  M.add_prefix('f', 'File')
+  M.bind_leader(
+    'fc',
+    function()
+      vim.ui.input({
+        prompt = 'Enter path',
+        completion = 'file',
+        default = './',
+      }, function(dir)
+        if dir == nil or dir == '' then
+          return
+        end
+        vim.api.nvim_set_current_dir(dir)
+      end)
+    end,
+    'Ch pwd'
+  )
 end
 
 return M
