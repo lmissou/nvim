@@ -34,6 +34,8 @@ local defaults = {
   signcolumn = 'yes',
   -- 设置主题
   termguicolors = true,
+  -- 允许隐藏或用其他字符替换文本
+  conceallevel = 1,
 }
 
 local options
