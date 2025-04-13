@@ -63,6 +63,7 @@ function M.setup()
   M.bind_leader('bd', '<cmd>bdelete<cr>', 'Delete buffers')
   M.bind_leader('bn', '<cmd>bnext<cr>', 'Next buffer')
   M.bind_leader('bp', '<cmd>bprevious<cr>', 'Previous buffer')
+  M.bind_leader('bo', '<cmd>%bd|e#<cr>', 'Only')
 end
 
 return M
