@@ -15,10 +15,11 @@ local M = {
     window = {
       mappings = {
         ["<space>"] = "",
+        ["L"] = "focus_preview",
         ["<tab>"] = "toggle_node",
         ["."] = "toggle_hidden",
-        ["<C-[>"] = "navigate_up",
-        ["<C-]>"] = "set_root",
+        ["h"] = "navigate_up",
+        ["l"] = "set_root",
       }
     }
   },
