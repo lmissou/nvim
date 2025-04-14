@@ -13,6 +13,17 @@ local M = {
     "nvim-lua/plenary.nvim",
   },
   opts = {
+    ui = {
+      enable = false,
+      checkboxes = {
+        -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
+        [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+        ["-"] = { char = "󰜴", hl_group = "ObsidianDoing" },
+        ["x"] = { char = "󰱒", hl_group = "ObsidianDone" },
+        ["~"] = { char = "󰜺", hl_group = "ObsidianCancel" },
+        ["!"] = { char = "", hl_group = "ObsidianImportant" },
+      }
+    },
     workspaces = {
       {
         name = "Obsidian",
@@ -33,13 +44,14 @@ local M = {
   },
   keys = {
     { '<leader>o',  desc = 'Obsidian' },
-    { '<leader>oc', mode = { 'n', 'v' }, '<cmd>ObsidianNew<cr>',       desc = 'Obsidian New' },
-    { '<leader>or', mode = { 'n', 'v' }, '<cmd>ObsidianRename<cr>',    desc = 'Obsidian Rename' },
-    { '<leader>og', mode = { 'n', 'v' }, '<cmd>ObsidianSearch<cr>',    desc = 'Obsidian Search' },
-    { '<leader>oo', mode = { 'n', 'v' }, '<cmd>ObsidianToday<cr>',     desc = 'Obsidian Today' },
-    { '<leader>od', mode = { 'n', 'v' }, '<cmd>ObsidianDailies<cr>',   desc = 'Obsidian Deilies' },
-    { '<leader>ol', mode = { 'n', 'v' }, '<cmd>ObsidianLinks<cr>',     desc = 'Obsidian Links' },
-    { '<leader>ob', mode = { 'n', 'v' }, '<cmd>ObsidianBacklinks<cr>', desc = 'Obsidian Backlinks' },
+    { '<leader>on', mode = { 'n', 'v' }, '<cmd>ObsidianNew<cr>',            desc = 'Obsidian New' },
+    { '<leader>or', mode = { 'n', 'v' }, '<cmd>ObsidianRename<cr>',         desc = 'Obsidian Rename' },
+    { '<leader>og', mode = { 'n', 'v' }, '<cmd>ObsidianSearch<cr>',         desc = 'Obsidian Search' },
+    { '<leader>ol', mode = { 'n', 'v' }, '<cmd>ObsidianLinks<cr>',          desc = 'Obsidian Links' },
+    { '<leader>ob', mode = { 'n', 'v' }, '<cmd>ObsidianBacklinks<cr>',      desc = 'Obsidian Backlinks' },
+    { '<leader>oo', mode = { 'n', 'v' }, '<cmd>ObsidianToday<cr>',          desc = 'Obsidian Today' },
+    { '<leader>od', mode = { 'n', 'v' }, '<cmd>ObsidianDailies<cr>',        desc = 'Obsidian Deilies' },
+    { '<leader>oc', mode = { 'n', 'v' }, '<cmd>ObsidianToggleCheckbox<cr>', desc = 'Obsidian Toggle Checkbox' },
   }
 }
 return M
