@@ -68,10 +68,14 @@ function M.setup()
   M.bind_leader(
     'fc',
     function()
+      local cur_buf_path = vim.fn.expand('%:h')
+      if cur_buf_path == nil then
+        cur_buf_path = './'
+      end
       vim.ui.input({
         prompt = 'Enter path',
         completion = 'file',
-        default = './',
+        default = cur_buf_path,
       }, function(dir)
         if dir == nil or dir == '' then
           return
