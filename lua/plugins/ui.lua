@@ -21,23 +21,6 @@ local M = {
       vim.cmd([[colorscheme catppuccin]])
     end,
   },
-  -- dashboard alpha
-  {
-    'goolord/alpha-nvim',
-    lazy = false,
-    keys = {
-      { '<leader>w', desc = 'Window' },
-      {
-        '<leader>ws',
-        mode = { 'n', 'v' },
-        '<cmd>Alpha<cr>',
-        desc = 'Startify Window',
-      },
-    },
-    config = function()
-      require('alpha').setup(require('alpha.themes.startify').config)
-    end,
-  },
   -- lualine
   {
     'nvim-lualine/lualine.nvim',
