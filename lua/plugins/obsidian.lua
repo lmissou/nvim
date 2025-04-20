@@ -1,9 +1,11 @@
 ---------- Obsidian
 
-local obsidian_path = vim.fn.getenv("OBSIDIAN_NOTE_PATH")
-if obsidian_path == vim.NIL then
-  obsidian_path = "~/文档/Obsidian"
+local documents_dir = vim.fn.systemlist('xdg-user-dir DOCUMENTS')[1]
+local home_dir = os.getenv('HOME')
+if documents_dir == vim.NIL or documents_dir == home_dir then
+  documents_dir = home_dir .. '/Documents'
 end
+local obsidian_path = documents_dir .. '/Notes'
 
 local M = {
   "epwalsh/obsidian.nvim",
