@@ -24,6 +24,9 @@ local M = {
     words = { enabled = true },
   },
   keys = {
+    -- Snacks dashboard
+    { '<leader>w',  desc = 'Window' },
+    { '<leader>ws', mode = { 'n', 'v' }, function() require('snacks.dashboard')() end,   desc = 'Dashboard' },
     -- Snacks picker
     { '<leader>b',  desc = 'Buffer' },
     { '<leader>bb', mode = { 'n', 'v' }, function() require('snacks.picker').buffers() end, desc = 'Buffers' },
