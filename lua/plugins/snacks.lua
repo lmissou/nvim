@@ -24,6 +24,9 @@ local M = {
     words = { enabled = true },
   },
   keys = {
+    -- Snacks git
+    { '<leader>g',  desc = 'Git' },
+    { '<leader>gg', mode = { 'n', 'v' }, function() require('snacks.lazygit')() end,   desc = 'Lazygit' },
     -- Snacks dashboard
     { '<leader>w',  desc = 'Window' },
     { '<leader>ws', mode = { 'n', 'v' }, function() require('snacks.dashboard')() end,   desc = 'Dashboard' },

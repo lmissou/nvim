@@ -15,14 +15,8 @@ function M.setup()
     })
   end
   vim.opt.rtp:prepend(lazypath)
-  local lazy_spec = {
-    { import = 'plugins.basic' },
-  }
-  if not vim.g.vscode then
-    table.insert(lazy_spec, { import = 'plugins' })
-  end
   require('lazy').setup({
-    spec = lazy_spec,
+    spec = { import = 'plugins' },
     defaults = {
       event = 'VeryLazy',
     },
