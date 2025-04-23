@@ -3,7 +3,9 @@
 local M = {
   'folke/which-key.nvim',
   lazy = false,
-  opts = {},
+  opts = {
+    preset = "helix", -- "classic" | "modern" | "helix"
+  },
   keys = {
     {
       '<leader>?',
@@ -14,7 +16,8 @@ local M = {
       desc = 'Buffer Local Keymaps',
     },
   },
-  config = function()
+  config = function(ctx, opts)
+    require('which-key').setup(opts)
     vim.o.timeout = true
     vim.o.timeoutlen = 300
   end,
