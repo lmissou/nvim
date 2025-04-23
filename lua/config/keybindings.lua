@@ -49,8 +49,9 @@ function M.setup()
   M.bind_key({ 'n', 'v' }, '<C-s>', '<cmd>w<cr>', 'Save Buffer')
   M.bind_key({ 'n', 'v' }, 'gh', '0')
   M.bind_key({ 'n', 'v' }, 'gl', '$')
-  -- 复制粘贴系统剪贴板（复制：ctrl+c/ctrl+shift+v，粘贴：ctrl+shift+v）
-  M.bind_key('v', '<C-c>', '"+y', 'System Copy')
+  -- 复制粘贴系统剪贴板（复制：gy/ctrl+shift+c，粘贴：gp/ctrl+shift+v）
+  M.bind_key({ 'n', 'v' }, 'gy', '"+y')
+  M.bind_key({ 'n', 'v' }, 'gp', '"+p')
   M.bind_key('v', '<C-S-c>', '"+y', 'System Copy')
   M.bind_key({ 'n', 'v', 'i' }, '<C-S-v>', '"+p', 'System Paste')
   -- 窗口切换
