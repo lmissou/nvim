@@ -69,6 +69,7 @@ function M.setup()
   M.bind_key({ 'n', 'v', 'i' }, '<C-M-l>', '<C-w>>', 'Go to the right window')
   -- Buffer切换
   M.add_prefix('b', 'Buffer')
+  M.bind_key({ 'n', 'v' }, '<C-w>d', '<cmd>bdelete<cr>', 'Close buffer')
   M.bind_key({ 'n', 'v' }, '<S-l>', '<cmd>bnext<cr>', 'Next buffer')
   M.bind_key({ 'n', 'v' }, '<S-h>', '<cmd>bprevious<cr>', 'Previous buffer')
   M.bind_leader('bd', '<cmd>bdelete<cr>', 'Delete buffers')
