@@ -46,6 +46,7 @@ function M.setup()
   -- 设置快捷键
   M.bind_key('i', 'jk', '<esc>')
   M.bind_leader('q', '<cmd>q<cr>', 'Quit')
+  M.bind_leader('<s-q>', '<cmd>wq<cr>', 'Quit with save')
   M.bind_key({ 'n', 'v' }, '<C-s>', '<cmd>w<cr>', 'Save Buffer')
   M.bind_key({ 'n', 'v' }, 'gh', '0')
   M.bind_key({ 'n', 'v' }, 'gl', '$')
