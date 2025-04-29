@@ -5,7 +5,7 @@ local M = {
   dependencies = {
     'folke/snacks.nvim' -- use snacks picker
   },
-  event = "VimEnter",
+  event = "VeryLazy",
   opts = {
     -- sign_priority = 8,  --set bookmark sign priority to cover other sign
     save_file = vim.fn.stdpath('data') .. '/.bookmarks', -- bookmarks save file path
