@@ -8,7 +8,7 @@ end
 local obsidian_path = documents_dir .. '/Notes'
 
 local M = {
-  "epwalsh/obsidian.nvim",
+  "obsidian-nvim/obsidian.nvim",
   ft = "markdown",
   dependencies = {
     -- Required.
@@ -16,14 +16,14 @@ local M = {
   },
   opts = {
     ui = {
-      enable = false,
+      enable = true,
       checkboxes = {
         -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
-        [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-        ["-"] = { char = "󰜴", hl_group = "ObsidianDoing" },
-        ["x"] = { char = "󰱒", hl_group = "ObsidianDone" },
-        ["~"] = { char = "󰜺", hl_group = "ObsidianCancel" },
-        ["!"] = { char = "", hl_group = "ObsidianImportant" },
+        [" "] = { hl_group = "ObsidianTodo" },
+        ["-"] = { hl_group = "ObsidianDoing" },
+        ["x"] = { hl_group = "ObsidianDone" },
+        ["~"] = { hl_group = "ObsidianCancel" },
+        ["!"] = { hl_group = "ObsidianImportant" },
       }
     },
     workspaces = {

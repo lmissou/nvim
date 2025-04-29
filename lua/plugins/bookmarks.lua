@@ -37,15 +37,13 @@ local M = {
     require('bookmarks').setup(opts)
     local picker = require('snacks.picker')
     picker.sources.bookmarks = {
-      format = function(item)
-        local ret = {}
-        local config = require('bookmarks.config').config
-        ret[#ret + 1] = { string.format("%s", item.file), "BookmarkFileName" }
-        ret[#ret + 1] = { ":" }
-        ret[#ret + 1] = { string.format("%s", item.pos[1]), "BookmarkLine" }
+      format = function(item, picker)
+        local bookmark_config = require('bookmarks.config').config
+        local picker_format = require('snacks.picker.format')
+        local ret = picker_format.filename(item, picker)
         local tag = item.info.tag
         if tag ~= nil and tag ~= '' then
-          local tag_icon = config.keywords[string.sub(tag, 1, 2)]
+          local tag_icon = bookmark_config.keywords[string.sub(tag, 1, 2)]
           if tag_icon ~= nil then
             tag = tag_icon .. string.sub(tag, 3, #tag)
           end
