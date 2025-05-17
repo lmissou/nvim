@@ -47,41 +47,24 @@ local M = {
     -- lsp config
     local mason_lspconfig = require('mason-lspconfig')
     -- Setup mason-lspconfig.
-    mason_lspconfig.setup({})
-    mason_lspconfig.setup_handlers({
-      function(server_name)
-        local capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
-        capabilities.textDocument.foldingRange = {
-          dynamicRegistration = false,
-          lineFoldingOnly = true
-        }
-        local server_config = {
-          capabilities = capabilities,
-          on_attach = on_lsp_attach,
-        }
-        -- 修复volar2报错问题
-        local vue_language_server_path = vim.fn.stdpath('data') ..
-            '/mason/packages/vue-language-server/node_modules/@vue/language-server'
-        if server_name == 'tsserver' then
-          server_config.init_options = {}
-          if vim.loop.fs_stat(vue_language_server_path) then
-            server_config.init_options.plugins = {
-              {
-                name = '@vue/typescript-plugin',
-                location = vue_language_server_path,
-                languages = { 'vue' },
-              },
-            }
-          end
-        elseif server_name == 'volar' then
-          server_config.init_options = {
-            vue = {
-              hybridMode = false,
-            },
-          }
-        end
-        require('lspconfig')[server_name].setup(server_config)
-      end,
+    mason_lspconfig.setup({ automatic_enable = true, })
+    local capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true
+    }
+    vim.lsp.config('*', {
+      capabilities = capabilities,
+      on_attach = on_lsp_attach,
+    })
+    vim.lsp.config('volar', {
+      on_attach = on_lsp_attach,
+      capabilities = capabilities,
+      init_options = {
+        vue = {
+          hybridMode = false,
+        },
+      }
     })
   end,
   -- after the language server attaches to the current buffer
