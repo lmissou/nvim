@@ -7,7 +7,7 @@ local M = {
     "MunifTanjim/nui.nvim",
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
   },
-  -- lazy = false, -- neo-tree will lazily load itself
+  lazy = false,
   ---@module "neo-tree"
   ---@type neotree.Config?
   opts = {
