@@ -56,4 +56,5 @@ local M = {
     { '<leader>oc', mode = { 'n', 'v' }, '<cmd>ObsidianToggleCheckbox<cr>', desc = 'Obsidian Toggle Checkbox' },
   }
 }
-return M
+-- return M
+return {}
