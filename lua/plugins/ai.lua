@@ -4,10 +4,12 @@ local M = {
   version = false, -- Never set this value to "*"! Never!
   opts = {
     provider = "ollama",
-    ollama = {
-      -- model = "deepseek-r1:8b",
-      model = "qwen2.5-coder:latest",
-    },
+    providers = {
+      ollama = {
+        -- model = "deepseek-r1:8b",
+        model = "qwen2.5-coder:latest",
+      },
+    }
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
@@ -20,4 +22,5 @@ local M = {
   },
 }
 
-return M
+-- return  M
+return {}
