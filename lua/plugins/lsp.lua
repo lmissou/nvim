@@ -41,7 +41,11 @@ local M = {
   },
   config = function()
     -- lsp saga
-    require('lspsaga').setup()
+    require('lspsaga').setup({
+      lightbulb = {
+        sign = false,
+      }
+    })
     -- mason
     require('mason').setup()
     require('mason-lspconfig').setup({
