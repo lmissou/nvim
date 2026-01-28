@@ -8,7 +8,7 @@ local M = {
       'hiphish/rainbow-delimiters.nvim',
     },
     config = function()
-      local ts = require('nvim-treesitter.configs')
+      local ts = require('nvim-treesitter')
       ts.setup({
         -- 高亮
         highlight = { enable = true },
