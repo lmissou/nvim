@@ -29,10 +29,16 @@ local M = {
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = 'default' },
+    keymap = { preset = 'super-tab' },
+
+    appearance = {
+      -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+      -- Adjusts spacing to ensure icons are aligned
+      nerd_font_variant = 'mono'
+    },
 
     -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = false } },
+    completion = { documentation = { auto_show = true } },
 
     -- (Default) list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
@@ -62,6 +68,7 @@ local M = {
     -- See the fuzzy documentation for more information
     fuzzy = { implementation = "lua" }
   },
+  opts_extend = { "sources.default" }
 }
 
 return M
