@@ -3,6 +3,7 @@
 local M = {
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     dependencies = {
       -- 彩虹括号
       'hiphish/rainbow-delimiters.nvim',
