@@ -53,6 +53,9 @@ local M = {
     })
     -- config vue_ls
     require('config.lsp.vue').setup(on_lsp_attach)
+    vim.lsp.config("rust_analyzer", {
+      on_attach = on_lsp_attach,
+    })
     vim.lsp.config("*", {
       on_attach = on_lsp_attach,
     })
