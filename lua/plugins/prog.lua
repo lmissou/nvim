@@ -35,6 +35,11 @@ local M = {
   {
     'iamcco/markdown-preview.nvim',
   },
+  -- rainbow 彩虹括号
+  {
+    'hiphish/rainbow-delimiters.nvim',
+    event = "BufRead",
+  }
 }
 
 return M
