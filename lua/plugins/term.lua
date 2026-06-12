@@ -8,8 +8,12 @@ local M = {
   config = function()
     -- use powershell(on windows)
     if vim.fn.has('win32') ~= 0 then
+      local shell = os.getenv('SHELL');
+      if shell == nil then
+        shell = vim.fn.executable('pwsh') == 1 and 'pwsh' or 'powershell';
+      end
       local powershell_options = {
-        shell = vim.fn.executable('pwsh') == 1 and 'pwsh' or 'powershell',
+        shell,
         shellcmdflag =
         '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;',
         shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait',
