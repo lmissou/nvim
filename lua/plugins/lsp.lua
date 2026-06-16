@@ -53,12 +53,12 @@ local M = {
     })
     -- config vue_ls
     require('config.lsp.vue').setup(on_lsp_attach)
-    vim.lsp.config("rust_analyzer", {
-      on_attach = on_lsp_attach,
-    })
-    vim.lsp.config("*", {
-      on_attach = on_lsp_attach,
-    })
+    local alt_lsps = { '*', 'rust_analyze', 'markdown_oxide' }
+    for _, name in ipairs(alt_lsps) do
+      vim.lsp.config(name, {
+        on_attach = on_lsp_attach,
+      })
+    end
   end,
   -- after the language server attaches to the current buffer
   on_lsp_attach = on_lsp_attach,
