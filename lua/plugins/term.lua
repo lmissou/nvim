@@ -1,54 +1,62 @@
+local kb = require "config.keybindings"
 ---------- terminal
+
+local terms = {}
+local set_keymap = function(bufnr)
+  local modes = { "t", "n" }
+  function kill()
+    vim.uv.kill(terms[bufnr], "sigkill")
+    table.remove(terms, bufnr)
+    vim.api.nvim_buf_delete(bufnr, {
+      force = true,
+    })
+  end
+
+  for _, mode in ipairs(modes) do
+    vim.api.nvim_buf_set_keymap(bufnr, mode, "<C-t>", "Open New Terminal", {
+      callback = function()
+        require("terminal").open()
+      end,
+    })
+
+    vim.api.nvim_buf_set_keymap(bufnr, mode, "<C-x>", "Close Terminal", {
+      callback = kill,
+    })
+    vim.api.nvim_buf_set_keymap(bufnr, mode, "<leader>bd", "Close Terminal", {
+      callback = kill,
+    })
+
+    vim.api.nvim_buf_set_keymap(bufnr, mode, "<esc>", "Stop Terminal Insert", {
+      callback = function()
+        vim.cmd("stopinsert")
+      end,
+    })
+  end
+end
 
 local M = {
   -- terminal
-  'akinsho/toggleterm.nvim',
-  keys = { '<leader>t' },
-  cmd = 'ToggleTerm',
-  config = function()
-    -- use powershell(on windows)
-    if vim.fn.has('win32') ~= 0 then
-      local shell = os.getenv('SHELL');
-      if shell == nil then
-        shell = vim.fn.executable('pwsh') == 1 and 'pwsh' or 'powershell';
-      end
-      local powershell_options = {
-        shell,
-        shellcmdflag =
-        '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;',
-        shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait',
-        shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode',
-        shellquote = '',
-        shellxquote = '',
-      }
-      for option, value in pairs(powershell_options) do
-        vim.opt[option] = value
-      end
-    end
-
-    -- setup toggleterm
-    require('toggleterm').setup({
-      direction = 'float',
-    })
-
-    -- keybinding
-    local kb = require('config.keybindings')
-    kb.add_prefix('t', 'Terminal')
-    kb.bind_leader('tt', '<cmd>ToggleTerm<cr>', 'Open term')
-    for i = 1, 9, 1 do
-      kb.bind_leader('t' .. i, '<cmd>ToggleTerm ' .. i .. '<cr>', 'Open term ' .. i)
-    end
-    function _G.set_terminal_keymaps()
-      local opts = { noremap = true }
-      vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
-      vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts) -- hidden term
-      vim.api.nvim_buf_set_keymap(0, 'n', '<C-h>', [[<C-\><C-n><C-W>h]], opts) -- hidden term
-      vim.api.nvim_buf_set_keymap(0, 'v', '<C-h>', [[<C-\><C-n><C-W>h]], opts) -- hidden term
-    end
-
-    -- only want these mappings for toggle term use term://*toggleterm#* instead
-    vim.cmd([[autocmd! TermOpen term://* lua set_terminal_keymaps()]])
-  end,
+  'niuiic/terminal.nvim',
+  opts = {
+    on_term_opened = function(bufnr, pid)
+      vim.api.nvim_set_option_value("filetype", "terminal", {
+        buf = bufnr,
+      })
+      set_keymap(bufnr)
+      terms[bufnr] = pid
+    end,
+  },
+  keys = {
+    {
+      "<leader>tt",
+      function()
+        require("terminal").open()
+      end,
+      desc = "open terminal",
+    },
+  },
 }
+
+kb.bind_key('t', '<C-h>', 'bd', 'Close terminal')
 
 return M

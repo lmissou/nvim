@@ -66,15 +66,54 @@ local M = {
     end
 
     local mason_dap = require('mason-nvim-dap')
+
+    -- js-debug-adapter配置
+    function js_dap_setup(config)
+      config.adapters = {
+        type = "server",
+        host = "localhost",
+        port = "${port}",
+        executable = {
+          command = "node",
+          args = {
+            vim.fn.stdpath("data")
+            .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+            "${port}",
+          },
+        },
+      }
+      config.filetypes = { "typescript", "javascript" }
+      config.configurations = {}
+      for _, language in ipairs({ "typescript", "javascript" }) do
+        dap.configurations[language] = {
+          {
+            type = "js",
+            request = "launch",
+            name = "Launch node",
+            program = "${file}",
+            cwd = "${workspaceFolder}",
+          },
+          {
+            type = "js",
+            request = "attach",
+            name = "Attach node",
+            program = "${file}",
+            cwd = "${workspaceFolder}",
+          },
+        }
+      end
+      mason_dap.default_setup(config)
+    end
+
     mason_dap.setup({
-      automatic_setup = true,
+      ensure_installed = { 'js-debug-adapter', 'codelldb' },
+      automatic_installation = false,
       handlers = {
         function(config)
-          -- all sources with no handler get passed here
-          -- Keep original functionality
           mason_dap.default_setup(config)
         end,
-      },
+        js = js_dap_setup
+      }
     })
     local kb = require('config.keybindings')
     kb.bind_key('n', '<F5>', '<cmd>DapContinue<cr>')
