@@ -19,7 +19,7 @@ local set_keymap = function(bufnr)
       end,
     })
 
-    vim.api.nvim_buf_set_keymap(bufnr, mode, "<C-x>", "Close Terminal", {
+    vim.api.nvim_buf_set_keymap(bufnr, mode, "<C-q>", "Quit Terminal", {
       callback = kill,
     })
     vim.api.nvim_buf_set_keymap(bufnr, mode, "<leader>bd", "Close Terminal", {
