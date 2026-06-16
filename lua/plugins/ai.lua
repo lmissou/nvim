@@ -1,3 +1,5 @@
+---------- AI
+
 local M = {
   "yetone/avante.nvim",
   event = "VeryLazy",
@@ -6,13 +8,14 @@ local M = {
     provider = "ollama",
     providers = {
       ollama = {
-        -- model = "deepseek-r1:8b",
-        model = "qwen2.5-coder:latest",
+        model = "gemma4",
       },
     }
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  build = "make",
+  build = vim.fn.has("win32") ~= 0
+      and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+      or "make",
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     "stevearc/dressing.nvim",
@@ -21,5 +24,4 @@ local M = {
   },
 }
 
--- return  M
-return {}
+return {} --M
