@@ -1,4 +1,3 @@
-local kb = require "config.keybindings"
 ---------- terminal
 
 local terms = {}
@@ -56,7 +55,5 @@ local M = {
     },
   },
 }
-
-kb.bind_key('t', '<C-h>', 'bd', 'Close terminal')
 
 return M
