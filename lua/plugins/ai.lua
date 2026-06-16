@@ -1,27 +1,51 @@
 ---------- AI
 
 local M = {
-  "yetone/avante.nvim",
-  event = "VeryLazy",
-  version = false, -- Never set this value to "*"! Never!
-  opts = {
-    provider = "ollama",
-    providers = {
-      ollama = {
-        model = "gemma4",
-      },
-    }
-  },
-  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  build = vim.fn.has("win32") ~= 0
-      and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-      or "make",
-  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+  "olimorris/codecompanion.nvim",
   dependencies = {
-    "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
-    "MunifTanjim/nui.nvim",
+    -- "nvim-treesitter/nvim-treesitter",
+  },
+  opts = {
+    interactions = {
+      cli = {
+        agent = "claude_code",
+        agents = {
+          claude_code = {
+            cmd = "claude",
+            args = {},
+            description = "Claude Code CLI",
+            provider = "terminal",
+          },
+        },
+      },
+      chat = {
+        -- You can specify an adapter by name and model (both ACP and HTTP)
+        adapter = {
+          name = "claude_code",
+          model = "gemma4",
+        },
+      },
+      -- Or, just specify the adapter by name
+      inline = {
+        -- adapter = "anthropic",
+        adapter = "claude_code",
+      },
+      cmd = {
+        adapter = "claude_code",
+      },
+      background = {
+        adapter = {
+          name = "ollama",
+          model = "gemma4",
+        },
+      },
+    },
+    -- NOTE: The log_level is in `opts.opts`
+    opts = {
+      log_level = "DEBUG", -- or "TRACE"
+    },
   },
 }
 
-return {} --M
+return M
